@@ -52,12 +52,12 @@ async def gen_start_kb(q: Message or CallbackQuery):
                     "url",
                 ),
             ],
-            [(f"📚 {(tlang(q, 'start.commands_btn'))}", "commands")],
+            [(f"📚 {(tlang(q, 'start.commands_btn'))}", "Komutlar")],
             [
-                (f"🌐 {(tlang(q, 'start.language_btn'))}", "chlang"),
+                (f"🌐 {(tlang(q, 'start.language_btn'))}", "Dil tercihi"),
                 (
                     f"🗃️ {(tlang(q, 'start.source_code'))}",
-                    "https://github.com/DivideProjects/Alita_Robot",
+                    "https://t.me/meyitzade47",
                     "url",
                 ),
             ],
