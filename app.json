@@ -85,7 +85,7 @@
     "ENABLED_LOCALES": {
       "description": "A space separated list of language which should be enabled in bot.",
       "required": false,
-      "value": "tr"
+      "value": "en"
     },
     "WORKERS": {
       "description": "Number of workers to eun the bot.",
