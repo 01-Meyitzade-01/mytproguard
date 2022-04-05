@@ -7,7 +7,7 @@
 files:
   [
     {
-      "source": "locales/en.yml",
+      "source": "locales/tr.yml",
       "translation": "locales/%two_letters_code%.yaml",
       "type": "yaml",
     },
