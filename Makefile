@@ -10,4 +10,4 @@ run:
 
 clean:
 	@rm -rf alita/logs
-	@pyclean 
+	@pyclean  .
