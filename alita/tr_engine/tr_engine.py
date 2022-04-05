@@ -36,7 +36,7 @@ lang_dict = cache_localizations(lang_files)
 def tlang(m, user_msg):
     """Main function for getting the string of preferred language."""
     with LANG_LOCK:
-        default_lang = "en"
+        default_lang = "tr"
 
         m_args = user_msg.split(".")  # Split in a list
 
@@ -44,7 +44,7 @@ def tlang(m, user_msg):
         if isinstance(m, CallbackQuery):
             m = m.message
 
-        # Get language of user from database, default = 'en' (English)
+        # Get language of user from database, default = 'tr' (Turkish)
         try:
             lang = Langs(m.chat.id).get_lang()
         except Exception as ef:
