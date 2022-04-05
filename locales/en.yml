@@ -615,11 +615,11 @@ strings:
     language_btn: Language
     pm_for_help: "Contact me in PM to get the list of possible commands."
     private: |-
-      Hey there! My name is MytProGuardBot✨.
+      Hey there! My name is MytGuard ✨.
       I'm here to help you manage your groups!
       Hit /help to find out more about how to use me in my full potential!
 
-      Join my [Kanal](http://t.me/Hiraset) to get information on all the latest updates.
+      Join my [News](http://t.me/meyitzade47) to get information on all the latest updates.
     public_help: "Press the button below to get help for <i>{help_option}</i>"
     source_code: "Source Code"
   utils:
