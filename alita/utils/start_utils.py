@@ -52,9 +52,9 @@ async def gen_start_kb(q: Message or CallbackQuery):
                     "url",
                 ),
             ],
-            [(f"📚 {(tlang(q, 'start.commands_btn'))}", "Komutlar")],
+            [(f"📚 {(tlang(q, 'start.commands_btn'))}", "Command")],
             [
-                (f"🌐 {(tlang(q, 'start.language_btn'))}", "Dil tercihi"),
+                (f"🌐 {(tlang(q, 'start.language_btn'))}", "Language"),
                 (
                     f"🗃️ {(tlang(q, 'start.source_code'))}",
                     "https://t.me/meyitzade47",
