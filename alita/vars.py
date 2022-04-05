@@ -25,7 +25,7 @@ class Config:
     PREFIX_HANDLER = config("PREFIX_HANDLER", default="/").split()
     SUPPORT_GROUP = config("SUPPORT_GROUP", default="HirasetTR")
     SUPPORT_CHANNEL = config("SUPPORT_CHANNEL", default="Hiraset")
-    ENABLED_LOCALES = [str(i) for i in config("ENABLED_LOCALES", default="tr").split()]
+    ENABLED_LOCALES = [str(i) for i in config("ENABLED_LOCALES", default="en").split()]
     VERSION = config("VERSION", default="v2.0")
     WORKERS = int(config("WORKERS", default=16))
     BOT_USERNAME = ""
@@ -47,7 +47,7 @@ class Development:
     SUDO_USERS = []
     WHITELIST_USERS = []
     DB_URI = "postgres://username:password@postgresdb:5432/database_name"
-    DB_NAME = "alita_robot"
+    DB_NAME = "cluster0"
     NO_LOAD = []
     PREFIX_HANDLER = ["!", "/"]
     SUPPORT_GROUP = "SUPPORT_GROUP"
