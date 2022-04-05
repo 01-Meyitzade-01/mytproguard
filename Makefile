@@ -9,8 +9,7 @@ install:
 	@pip install -r requirements.txt
 run:
 
-        @python3 -m alita
-
+        @python3 -m Alita
 clean:
-	@rm -rf alita/logs
+	@rm -rf Alita/logs
 	@pyclean .
