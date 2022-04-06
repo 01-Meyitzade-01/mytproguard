@@ -363,48 +363,48 @@ strings:
       <b>Supported markdown</b>:
       - <code>`code words`</code>: Tek aralıklı yazı tipleri için backtickler kullanılır. Şu şekilde gösterilir: <code>kod sözcükleri</code>.
       - <code>__italic__</code>: İtalik yazı tipleri için alt çizgi kullanılır. Şu şekilde gösterilir: <i>italik kelimeler</i>.
-      - <code>**bold**</code>: Asterisks are used for bold fonts. Shows as: <b>bold words</b>.
-      - <code>```pre```</code>: To make the formatter ignore other formatting characters inside the text formatted with '```', like: <code>**bold** | *bold*</code>.
-      - <code>--underline--</code>: To make text <u>underline</u>.
-      - <code>~~strike~~</code>: Tildes are used for strikethrough. Shows as: <strike>strike</strike>.
-      - <code>||spoiler||</code>: Double vertical bars are used for spoilers. Shows as: <spoiler>Spoiler</spoiler>.
-      - <code>[hyperlink](example.com)</code>: This is the formatting used for hyperlinks. Shows as: <a href="https://example.com/">hyperlink</a>.
-      - <code>[My Button](buttonurl://example.com)</code>: This is the formatting used for creating buttons. This example will create a button named "My button" which opens <code>example.com</code> when clicked.
-      If you would like to send buttons on the same row, use the <code>:same</code> formatting.
+      - <code>**bold**</code>: Kalın yazı tipleri için yıldız işaretleri kullanılır. Şu şekilde gösterilir: <b>kalın kelimeler</b>.
+      - <code>```pre```</code>: Biçimlendiricinin '```' ile biçimlendirilmiş metin içindeki diğer biçimlendirme karakterlerini yok saymasını sağlamak için, örneğin: <code>**kalın** | *kalın*</code>.
+      - <code>--underline--</code>: Metni <u>altı çizili</u> yapmak için.
+      - <code>~~strike~~</code>: Tildeler üstü çizili olarak kullanılır. Şu şekilde gösterilir: <strike>strike</strike>.
+      - <code>||spoiler||</code>: Spoiler için çift dikey çubuklar kullanılmıştır. Şu şekilde gösterilir: <spoiler>Spoiler</spoiler>.
+      - <code>[hyperlink](example.com)</code>: Bu, köprüler için kullanılan biçimlendirmedir. Şu şekilde gösterilir: <a href="https://example.com/">köprü</a>.
+      - <code>[My Button](buttonurl://example.com)</code>: Bu, düğmeler oluşturmak için kullanılan biçimlendirmedir. Bu örnek, tıklandığında <code>example.com</code>'u açan "my button" adlı bir düğme oluşturacaktır..
+      Düğmeleri aynı satırda göndermek istiyorsanız, <code>:same</code> biçimlendirmesini kullanın..
       <b>Example:</b>
       <code>[button 1](buttonurl:example.com)</code>
       <code>[button 2](buttonurl://example.com:same)</code>
       <code>[button 3](buttonurl://example.com)</code>
-      This will show button 1 and 2 on the same line, while 3 will be underneath.
+      Bu, düğme 1 ve 2'yi aynı satırda gösterecek, 3 ise altında olacak.
     filling_help: |-
       <b>Fillings</b>
-      You can also customise the contents of your message with contextual data. For example, you could mention a user by name in the welcome message, or mention them in a filter!
-      You can use these to mention a user in notes too!
+      Ayrıca mesajınızın içeriğini bağlamsal verilerle özelleştirebilirsiniz. Örneğin, hoş geldiniz mesajında ​​bir kullanıcıdan adıyla bahsedebilir veya bir filtrede ondan bahsedebilirsiniz.!
+      Bunları notlarda bir kullanıcıdan bahsetmek için de kullanabilirsiniz.!
       <b>Supported fillings:</b>
-      - <code>{first}</code>: The user's first name.
-      - <code>{last}</code>: The user's last name.
-      - <code>{fullname}</code>: The user's full name.
-      - <code>{username}</code>: The user's username. If they don't have one, mentions the user instead.
-      - <code>{mention}</code>: Mentions the user with their firstname.
-      - <code>{id}</code>: The user's ID.
-      - <code>{chatname}</code>: The chat's name.
+      - <code>{first}</code>: kullanıcının adı.
+      - <code>{last}</code>: kullanıcının soyadı.
+      - <code>{fullname}</code>: Kullanıcının tam adı.
+      - <code>{username}</code>: Kullanıcının kullanıcı adı. Ellerinde yoksa, bunun yerine kullanıcıdan bahseder.
+      - <code>{mention}</code>: Kullanıcıdan ilk adıyla bahseder.
+      - <code>{id}</code>: kullanıcının kimliği.
+      - <code>{chatname}</code>: sohbetin adı.
     random_help: |-
       <b>Random Content</b>
-      Another thing that can be fun, is to randomise the contents of a message. Make things a little more personal by changing welcome messages, or changing notes!
-      How to use random contents:
-      - %%%: This separator can be used to add "random" replies to the bot.
-      For example:
-      <code>hello
+      Eğlenceli olabilecek başka bir şey, bir mesajın içeriğini rastgele hale getirmektir. Karşılama mesajlarını veya notları değiştirerek işleri biraz daha kişisel hale getirin!
+      Rastgele içerikler nasıl kullanılır:
+      - %%%: Bu ayırıcı, bota "rastgele" yanıtlar eklemek için kullanılabilir.
+      Örneğin:
+      <code>Merhaba
       %%%
-      how are you</code>
-      This will randomly choose between sending the first message, "hello", or the second message, "how are you".
-      Use this to make Alita feel a bit more customised! (only works in filters/notes)
-      Example welcome message::
-      - Every time a new user joins, they'll be presented with one of the three messages shown here.
+      nasılsın?</code>
+      Bu, ilk mesajı "merhaba" veya ikinci mesajı "nasılsın" göndermek arasında rastgele seçim yapacaktır..
+      MytGuard'ı biraz daha özelleştirilmiş hissettirmek için bunu kullanın! (yalnızca filtrelerde/notlarda çalışır)
+      Örnek karşılama mesajı::
+      - Her yeni kullanıcı katıldığında, burada gösterilen üç mesajdan biri ile karşılaşacaklar..
       -> /filter "hey"
-      hello there <code>{first}</code>!
+      merhaba 🤭 <code>{first}</code>!
       %%%
-      Ooooh, <code>{first}</code> how are you?
+      Şşş, <code>{first}</code> nasılsın? 🤔
       %%%
       Sup? <code>{first}</code>
   antispam:
@@ -414,76 +414,76 @@ strings:
         <b>Chat:</b> <code>{chat_id}</code>
         <b>Error:</b> <code>{ef}</code>
       added_to_watch: |-
-        Added {first_name} to GBan List.
-        They will now be banned in all groups where I'm admin!
-      enter_reason: "Please enter a reason to gban user!"
+        {first_name} GBan Listesine eklendi.
+        Artık yönetici olduğum tüm gruplarda yasaklanacaklar!
+      enter_reason: "Lütfen gban kullanıcısı için bir neden girin!"
       how_to: |-
-        <b>How to gban?</b>
-        <b>Answer:</b> <code>/gban user_id reason</code>
+        <b>gban nasıl yapılır?</b>
+        <b>Yanıt ver:</b> <code>/gban user_id sebep</code>
       log_msg: |-
         #GBAN
-        <b>Originated from:</b> {chat_id}
+        <b>Kaynak::</b> {chat_id}
         <b>Admin:</b> {ban_admin}
-        <b>Gbanned User:</b> {gbanned_user}
-        <b>Gbanned User ID:</b> {gban_user_id}
+        <b>G yasaklı Kullanıcı:</b> {gbanned_user}
+        <b>G yasaklı Kullanıcı ID:</b> {gban_user_id}
         <b>Event Stamp:</b> {time}
       not_self: |-
-        You can't gban me nigga!
-        Nice Try...!
-      updated_reason: "Updated Gban reason to: <code>{gban_reason}</code>."
+        Bana gban yapamazsın salak!
+        İyi deneme.🤓
+      updated_reason: "Gban nedeni şu şekilde güncellendi: <code>{gban_reason}</code>."
       user_added_to_watch: |-
-        You have been added to my global ban list!
-        <b>Reason:</b> <code>{gban_reason}</code>
-        <b>Appeal Chat:</b> @{SUPPORT_GROUP}
-    here_gbanned_start: "Here are all the globally banned geys!\n\n"
-    none_gbanned: "There aren't any gbanned users...!"
-    num_gbans: "Number of people gbanned: <code>{count}</code>"
-    part_of_support: "This user is part of my Support!, Can't ban our own!"
-    pass_user_id: "Pass a user id or username as an argument!"
+        Global ban listeme eklendiniz!
+        <b>Sebep:</b> <code>{gban_reason}</code>
+        <b>İtiraz Sohbeti:</b> @{SUPPORT_GROUP}
+    here_gbanned_start: "İşte tüm dünyada yasaklanmış gbanlılar!\n\n"
+    none_gbanned: "gban'lı kullanıcı yok...!"
+    num_gbans: "Yasaklanan kişi sayısı: <code>{count}</code>"
+    part_of_support: "Bu kullanıcı Desteğimin bir parçası!, Kendimizi yasaklayamayız!"
+    pass_user_id: "Bir kullanıcı kimliğini veya kullanıcı adını bağımsız değişken olarak iletin!"
     ungban:
       log_msg: |-
         #UNGBAN
-        <b>Originated from:</b> {chat_id}
+        <b>Kaynak::</b> {chat_id}
         <b>Admin:</b> {ungban_admin}
-        <b>UnGbanned User:</b> {ungbanned_user}
-        <b>UnGbanned User ID:</b> {ungbanned_user_id}
+        <b>Yasaklanmamış Kullanıcı:</b> {ungbanned_user}
+        <b>Yasaklanmamış Kullanıcı ID:</b> {ungbanned_user_id}
         <b>Event Stamp:</b> {time}
-      non_gbanned: "User is not gbanned!"
-      not_self: "Nice Try...!"
-      removed_from_list: "Removed {first_name} from Global Ban List."
-      user_removed_from_list: "You have been removed from my global ban list!"
+      non_gbanned: "Kullanıcı gbanlı değil!"
+      not_self: "İyi deneme...!"
+      removed_from_list: "{first_name}, Global Ban Listesinden kaldırıldı."
+      user_removed_from_list: "Küresel yasak listemden çıkarıldınız!"
     watcher_banned: |-
-      This user ({user_gbanned}) has been banned globally!
-      To get unbanned, appeal at @{SUPPORT_GROUP}
+      Bu kullanıcı ({user_gbanned}) dünya çapında yasaklandı!
+      Yasağı kaldırmak için @{SUPPORT_GROUP} adresinden itiraz edin
   blacklist:
     bl_watcher:
-      action_kick: "Kicked {user} for sending a blacklisted word!"
-      action_ban: "Banned {user} for sending a blacklisted word!"
-      action_mute: "Muted {user} for sending a blacklisted word!"
-    already_exists: "The word <code>{trigger}</code> is already blacklisted!"
+      action_kick: "Kara listeye alınmış bir kelime gönderdiği için {user} atıldı!"
+      action_ban: "Kara listeye alınmış bir kelime gönderdiği için {user} yasaklandı!"
+      action_mute: "Kara listeye alınmış bir kelimeyi göndermek için sessize alınan {user}!"
+    already_exists: "<code>{trigger}</code> kelimesi zaten kara listeye alınmış!"
     action_get: |-
-      The current action for blacklists in this chat is <i><b>{action}</b></i>
-      All blacklist modes delete the message containing blacklist word.
-      If you want to change this, you need to specify a new action instead of it.
-      Possible actions are: <code>none</code>/<code>warn</code>/<code>mute</code>/<code>ban</code>
-    action_set: "Set action for blacklist for this to <b>{action}</b>"
-    added_blacklist: "Added <code>{trigger}</code> in blacklist words!"
-    curr_blacklist_initial: "Current Blacklisted words in <b>{chat_title}</b>:\n\n"
-    no_bl_found: "No blacklist <b>{bl_words}</b> found!"
-    no_blacklist: "There are no blacklisted messages in <b>{chat_title}</b>!"
-    rm_blacklist: "Removed <b>{bl_words}</b> from blacklist words!"
+      Bu sohbetteki kara listeler için geçerli eylem şudur: <i><b>{action}</b></i>
+      Tüm kara liste modları, kara liste kelimesini içeren mesajı siler.
+      Bunu değiştirmek istiyorsanız, bunun yerine yeni bir işlem belirtmeniz gerekir..
+      Olası eylemler: <code>none</code>/<code>warn</code>/<code>mute</code>/<code>ban</code>
+    action_set: "Bunun için kara liste eylemini <b>{action}</b> olarak ayarlayın"
+    added_blacklist: "Kara liste kelimelerine <code>{trigger}</code> eklendi!"
+    curr_blacklist_initial: "<b>{chat_title}</b> için Kara Listeye alınan mevcut kelimeler:\n\n"
+    no_bl_found: "<a>{bl word}</be> kara listesi bulunamadı!"
+    no_blacklist: "<b>{chat_title}</b> içinde kara listeye alınmış mesaj yok!"
+    rm_blacklist: "<b>{bl_words}</b> kara listedeki kelimelerden kaldırıldı!"
   dev:
     bot_ip: |-
       <b>Bot IP Address:</b>
       <code>{ip}</code>
     chatlist:
-      chats_in_db: "Here is the list of chats in my Database."
-      exporting: "Exporting Charlist..."
+      chats_in_db: "İşte Veritabanımdaki sohbetlerin listesi."
+      exporting: "Liste dışa aktarılıyor..."
       header: |
-        List of chats in my database.
+        Veritabanımdaki sohbetlerin listesi.
         <b>Chat name | Chat ID | Members count</b>
-    execute_cmd_err: "Please execute the code correctly!"
-    restarting: Restarting...
+    execute_cmd_err: "Lütfen kodu doğru şekilde yürütün!"
+    restarting: Yeniden başlatılıyor...
     speedtest:
       speedtest_txt: |-
         Speedtest
@@ -491,52 +491,52 @@ strings:
         <b>Ping:</b> <code>{ping}</code> ms
         <b>Download:</b> <code>{download}</code> Mbps
         <b>Upload:</b> <code>{upload}</code> Mbps
-      start_speedtest: "Calculating my speed..."
+      start_speedtest: "hızımı hesaplıyorum..."
     uptime: "<b>Uptime:</b> <code>{uptime}</code>"
   general:
     donate_owner: |-
-      Hey Thanks for your thought of donating me!
-      When you donate, all the fund goes towards my development which makes on fast and responsive.
-      Your donation might also me get me a new feature or two, which I wasn't able to get due to server limitations.
-      All the fund would be put into my services such as database, storage and hosting!
-      You can donate by contacting my owner here: @DivideProjectsBot
-    back_btn: Back
-    check_help: "Please check help on how to use this this command."
-    close_btn: Close
+      Hey, beni kullanmayı düşündüğün için teşekkürler!
+      tüm fon benim gelişimime gidiyor, bu da hızlı ve duyarlı hale getiriyor.
+      Beni duyurmanız bana sunucu sınırlamaları nedeniyle alamadığım bir veya iki yeni özellik kazandırabilir..
+      Tüm fon, veritabanı, depolama ve barındırma gibi hizmetlerime yatırılacaktı.!
+      Buradan sahibim ile iletişime geçin: @meyitzade47
+    back_btn: Geri
+    check_help: "Lütfen bu komutun nasıl kullanılacağına ilişkin yardımı kontrol edin."
+    close_btn: Kapat
     commands_available: |-
-      Hey There! My name is Alita.
-      I'm here to help you manage your groups!
+      Selam! benim adım MytGuard ✨
+      Gruplarınızı yönetmenize yardımcı olmak için buradayım!
       Commands available:
-       × /start: Start the bot
-       × /help: Give's you this message.
-       × /donate: Information related on how to support my creator!
-       All commands can either be used with / or !.
-    no_admin_cmd_perm: "You cannot use an admin command!"
-    no_perm_admin: "I don't have permission to do that"
-    no_results: "No results found."
+       × /start: botu başlat
+       × /help: Sana bu mesajı ver.
+       × /donate: İçerik üreticimi nasıl destekleyeceğimle ilgili bilgiler!
+       Tüm komutlar / ile kullanılabilir veya !.
+    no_admin_cmd_perm: "Yönetici komutu kullanamazsınız!"
+    no_perm_admin: "bunu yapmaya iznim yok"
+    no_results: "Sonuç bulunamadı."
     some_error: |-
       Some error occured, report to @{SUPPORT_GROUP}
       <b>Error:</b> <code>{ef}</code>
-    something_wrong: "Something went wrong!"
+    something_wrong: "Bir şeyler yanlış gitti!"
   langs:
-    changed: "Language changed to <code>{lang_code}</code>"
+    changed: "Dil <code>{lang_code}</code> olarak değiştirildi"
     changelang: |-
-      Here you can change language for the bot.
-      You can help us bring bot to more languages by helping on [Crowdin](https://crowdin.com/project/alita_robot)
+      Burada botun dilini değiştirebilirsiniz.
+      [Sahibim](https://meyitzade47) ile iletişime geçin, yardımcı olabiliriz.
     correct_usage: |-
       <b>Correct Usage:</b>
       /lang or /setlang language-code
   locks:
-    check_perm_msg: "Checking Chat permissions..."
+    check_perm_msg: "Sohbet izinleri kontrol ediliyor..."
     invalid_lock: |-
-      Invalid Lock Type!
-      Use /locktypes to get the lock types
-    lock_all: "Locked <b>all</b> permission from this Chat!"
-    locked_perm: "Locked <b>{perm}</b> for this Chat."
-    locks_perm_sp: "Specify a permission to lock!"
-    unlock_all: "Unlocked <b>all</b> permission from this Chat!"
-    unlocked_perm: "Unlocked <b>{uperm}</b> for this Chat."
-    unlocks_perm.sp_perm: "Specify a permission to unlock!"
+      Geçersiz Kilit Türü!
+      Kilit türlerini almak için /locktypes kullanın
+    lock_all: "Bu Sohbetten <b>tüm</b> izinler kilitlendi!"
+    locked_perm: "Bu Sohbet için <b>{perm}</b> kilitlendi."
+    locks_perm_sp: "Kilitlemek için bir izin belirtin!"
+    unlock_all: "Bu Sohbetten <b>tüm</b> iznin kilidi açıldı!"
+    unlocked_perm: "Bu Sohbet için <b>{uperm}</b> kilidi açıldı."
+    unlocks_perm.sp_perm: "Kilidi açmak için bir izin belirtin!"
     view_perm: |-
       <b>Chat Permissions:</b>
       <b>Send Messages:</b> {vmsg}
@@ -552,68 +552,68 @@ strings:
       <b>Pin Messages:</b> {vpin}
   pin:
     antichannelpin:
-      current_status: "Current AntiChannelPin status: {status}"
-      turned_on: "Turned on AntiChannelPin, now all message pinned by channel will be unpinned automtically!"
-      turned_off: "Turned off AntiChannelPin, now all message pinned by channel will stay pinned!"
-    no_pin_msg: "Reply to a message to which you want to pin..."
-    no_rights_pin: "I don't have enough rights to pin messages."
-    no_rights_unpin: "I don't have enough rights to unpin messages."
-    pinned_msg: "I have Pinned [this message]({message_link})!"
-    reply_to_unpin: "Idk what do you want to unpin, reply to a message to unpin it."
-    unpinned_all_msg: "Unpinned all messages in this chat."
-    unpinned_last_msg: "Unpinned last message."
+      current_status: "Mevcut AntiChannelPin durumu: {status}"
+      turned_on: "AntiChannelPin açıldı, artık kanal tarafından sabitlenen tüm mesajların sabitlemesi otomatik olarak kaldırılacak!"
+      turned_off: "AntiChannelPin kapatıldı, artık kanal tarafından sabitlenen tüm mesajlar sabitlenecek!"
+    no_pin_msg: "Sabitlemek istediğiniz bir mesajı yanıtlayın..."
+    no_rights_pin: "Mesajları sabitlemek için yeterli hakkım yok."
+    no_rights_unpin: "İletilerin sabitlemesini kaldırmak için yeterli hakkım yok."
+    pinned_msg: "[Bu mesajı]({message_link}) Sabitledim!"
+    reply_to_unpin: "Neyin sabitlemesini kaldırmak istiyorsunuz, sabitlemesini kaldırmak için bir iletiyi yanıtlayın."
+    unpinned_all_msg: "Bu sohbetteki tüm mesajların sabitlemesi kaldırıldı."
+    unpinned_last_msg: "Sabitlenmemiş son mesaj."
   purge:
-    deleting: "Incinerating these useless messages..."
-    err_basic: "Cannot purge messages in a basic group"
-    old_msg_err: "Cannot delete all messages. The messages may be too old, I might not have delete rights, or this might not be a supergroup."
-    purge_msg_count: "Deleted <i>{msg_count}</i> messages"
-    what_del: "What do you wanna delete?"
+    deleting: "Bu işe yaramaz mesajları yak..."
+    err_basic: "Temel bir gruptaki mesajlar temizlenemiyor"
+    old_msg_err: "Tüm mesajlar silinemez. Mesajlar çok eski olabilir, silme haklarım olmayabilir veya bu bir üst grup olmayabilir."
+    purge_msg_count: "<i>{msg_count}</i> ileti silindi"
+    what_del: "neyi silmek istiyorsun?"
   rules:
     priv_rules:
-      no_option: "Option not valid, choose from <code>on</code>, <code>yes</code>, <code>off</code>, <code>no</code>"
-      turned_on: "Private Rules have been turned <b>on</b> for chat <b>{chat_name}</b>"
-      turned_off: "Private Rules have been turned <b>off</b> for chat <b>{chat_name}</b>"
-      current_preference: "Current Preference for Private rules in this chat is: <b>{current_option}</b>"
-    clear_rules: "Are you sure you want to clear rules?"
-    cleared: "Successfully cleared rules for this group!"
+      no_option: "Seçenek geçerli değil, <code>on</code>, <code>yes</code>, <code>off</code>, <code>no</code> arasından seçim yapın"
+      turned_on: "<b>{chat_name}</b> sohbeti için Özel Kurallar <b>açıldı</b>"
+      turned_off: "<b>{chat_name}</b> sohbeti için Özel Kurallar <b>kapatıldı</b>"
+      current_preference: "Bu sohbetteki Gizli kurallar için Mevcut Tercih: <b>{current_option}</b>"
+    clear_rules: "Kuralları temizlemek istediğinizden emin misiniz??"
+    cleared: "Bu grup için kurallar başarıyla temizlendi!"
     get_rules: |-
-      The rules for <b>{chat} are:</b>
+      <b>{chat} için kurallar:</b>
       {rules}
-    no_rules: "The Admins for this group have not setup rules! That doesn't mean you can break the DECORUM of this group !"
-    pm_me: "Click on the below button to see this group rules!"
-    sent_pm_rules: "I've messaged you the rules"
-    set_rules: "Successfully set rules for this group."
+    no_rules: "Bu grubun Yöneticilerinin kurulum kuralları yok! Bu, bu grubun huzurunu bozabileceğiniz anlamına gelmez. !"
+    pm_me: "Bu grup kurallarını görmek için aşağıdaki butona tıklayın!"
+    sent_pm_rules: "sana kuralları mesaj attım"
+    set_rules: "Bu grup için kurallar başarıyla belirlendi."
   start:
-    add_chat_btn: "Add me to a chat!"
-    commands_btn: Commands & Help
-    group: "I'm alive :3"
+    add_chat_btn: "beni bir sohbete ekle!"
+    commands_btn: Komutlar ve Yardım
+    group: "yaşıyorum 🤓"
     info_page: |-
-      • @Alita_Robot
+      • @MytProGuardBot
       <b>Version:</b> <i>{version}</i>
-      <b>Developers:</b> [Divkix](https://github.com/Divkix)
+      <b>Developers:</b> [meyitzade](https://meyitzade47)
       <b>Owner:</b> [{Owner}](tg://user?id={ID})
     support_group: Support
     language_btn: Language
-    pm_for_help: "Contact me in PM to get the list of possible commands."
+    pm_for_help: "Olası komutların listesini almak için PM'de bana ulaşın."
     private: |-
-      Hey there! My name is MytGuard ✨.
-      I'm here to help you manage your groups!
-      Hit /help to find out more about how to use me in my full potential!
-      Join my [News](http://t.me/meyitzade47) to get information on all the latest updates.
-    public_help: "Press the button below to get help for <i>{help_option}</i>"
-    source_code: "Source Code"
+      Selam! Benim adım MytGuard ✨.
+      Gruplarınızı yönetmenize yardımcı olmak için buradayım!
+      Beni tam potansiyelimde nasıl kullanacağım hakkında daha fazla bilgi edinmek için /help'e basın!
+      En son güncellemeler hakkında bilgi almak için [Sahibime](http://t.me/meyitzade47) ulaşın.
+    public_help: "<i>{help_option}</i> için yardım almak için aşağıdaki düğmeye basın"
+    source_code: "Kaynak kodu"
   utils:
     gif_id:
-      reply_gif: "Please reply to a gif to get it's ID."
+      reply_gif: "Kimliğini almak için lütfen bir gifi yanıtlayın."
     id:
-      group_id: "This Group's ID is <code>{group_id}</code>"
+      group_id: "Bu Grubun kimliği <code>{group_id}</code>"
       id_main: |-
         Original Sender - {orig_sender} (<code>{orig_id}</code>)
         Forwarder - {fwd_sender} (<code>{fwd_id}</code>)
-      my_id: "Your ID is <code>{my_id}</code>."
+      my_id: "Kimliğiniz <code>{my_id}</code>."
     no_user_db: |-
-      Failed to get user
-      Peer ID invalid, I haven't seen this user anywhere earlier, maybe username would help to know them!
+      kullanıcı alınamadı
+      Eş kimliği geçersiz, bu kullanıcıyı daha önce hiçbir yerde görmedim, belki kullanıcı adı onları tanımamıza yardımcı olabilir!
     paste:
       nekobin_btn: NekoBin
       pasted_nekobin: "NekoBin'e yapıştırıldı!"
