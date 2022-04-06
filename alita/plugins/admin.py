@@ -37,7 +37,7 @@ async def adminlist_show(_, m: Message):
     global ADMIN_CACHE
     if m.chat.type != "supergroup":
         return await m.reply_text(
-            "This command is made to be used in groups only!",
+            "Bu komut yalnızca gruplarda kullanılmak üzere yapılmıştır!",
         )
     try:
         try:
@@ -106,7 +106,7 @@ async def zombie_clean(c: Alita, m: Message):
 
     zombie = 0
 
-    wait = await m.reply_text("Searching ... and banning ...")
+    wait = await m.reply_text("Arama ve yasaklama ...")
     async for member in c.iter_chat_members(m.chat.id):
         if member.user.is_deleted:
             zombie += 1
@@ -117,9 +117,9 @@ async def zombie_clean(c: Alita, m: Message):
             except FloodWait as e:
                 await sleep(e.x)
     if zombie == 0:
-        return await wait.edit_text("Group is clean!")
+        return await wait.edit_text("Grup temiz!")
     return await wait.edit_text(
-        f"<b>{zombie}</b> Zombies found and has been banned!",
+        f"<b>{zombie}</b> Zombiler bulundu ve yasaklandı!",
     )
 
 
@@ -129,7 +129,7 @@ async def reload_admins(_, m: Message):
 
     if m.chat.type != "supergroup":
         return await m.reply_text(
-            "This command is made to be used in groups only!",
+            "Bu komut yalnızca gruplarda kullanılmak üzere yapılmıştır!",
         )
 
     if (
@@ -137,7 +137,7 @@ async def reload_admins(_, m: Message):
         and (m.from_user.id not in SUPPORT_STAFF)
         and TEMP_ADMIN_CACHE_BLOCK[m.chat.id] == "manualblock"
     ):
-        await m.reply_text("Can only reload admin cache once per 10 mins!")
+        await m.reply_text("Yönetici önbelleğini yalnızca 10 dakikada bir yeniden yükleyebilir!")
         return
 
     try:
@@ -196,7 +196,7 @@ async def fullpromote_usr(c: Alita, m: Message):
     bot = await c.get_chat_member(m.chat.id, Config.BOT_ID)
 
     if user_id == Config.BOT_ID:
-        await m.reply_text("Huh, how can I even promote myself?")
+        await m.reply_text("Ha, kendimi nasıl terfi ettirebilirim?")
         return
 
     if not bot.can_promote_members:
@@ -217,7 +217,7 @@ async def fullpromote_usr(c: Alita, m: Message):
 
     if user_id in admin_list:
         await m.reply_text(
-            "This user is already an admin, how am I supposed to re-promote them?",
+            "Bu kullanıcı zaten bir yönetici, onları nasıl yeniden tanıtabilirim??",
         )
         return
 
@@ -248,7 +248,7 @@ async def fullpromote_usr(c: Alita, m: Message):
             LOGGER.error(e)
 
         LOGGER.info(
-            f"{m.from_user.id} fullpromoted {user_id} in {m.chat.id} with title '{title}'",
+            f"{m.from_user.id}, {m.chat.id} içinde {user_id} adını '{title}' başlığıyla tam olarak tanıttı'",
         )
 
         await m.reply_text(
@@ -326,7 +326,7 @@ async def promote_usr(c: Alita, m: Message):
 
     if user_id in admin_list:
         await m.reply_text(
-            "This user is already an admin, how am I supposed to re-promote them?",
+            "Bu kullanıcı zaten bir yönetici, onları nasıl yeniden tanıtabilirim??",
         )
         return
 
@@ -357,7 +357,7 @@ async def promote_usr(c: Alita, m: Message):
             LOGGER.error(e)
 
         LOGGER.info(
-            f"{m.from_user.id} promoted {user_id} in {m.chat.id} with title '{title}'",
+            f"{m.from_user.id}, {m.chat.id}'de {user_id} kullanıcısını "{title} başlığıyla yükseltti'",
         )
 
         await m.reply_text(
@@ -366,7 +366,7 @@ async def promote_usr(c: Alita, m: Message):
                 promoted=(await mention_html(user_first_name, user_id)),
                 chat_title=f"{escape(m.chat.title)} title set to {title}"
                 if title
-                else f"{escape(m.chat.title)} title set to Admin",
+                else f"{escape(m.chat.title)} başlığı Yönetici olarak ayarlandı",
             ),
         )
 
@@ -416,7 +416,7 @@ async def demote_usr(c: Alita, m: Message):
         return
 
     if user_id == Config.BOT_ID:
-        await m.reply_text("Get an admin to demote me!")
+        await m.reply_text("yetkimi indirmek için bir yönetici bul!")
         return
 
     # If user not alreay admin
@@ -429,7 +429,7 @@ async def demote_usr(c: Alita, m: Message):
 
     if user_id not in admin_list:
         await m.reply_text(
-            "This user is not an admin, how am I supposed to re-demote them?",
+            "Bu kullanıcı bir yönetici değil, nasıl yetkisini indirebilirim??",
         )
         return
 
@@ -507,7 +507,7 @@ async def get_invitelink(c: Alita, m: Message):
             ),
             disable_web_page_preview=True,
         )
-        LOGGER.info(f"{m.from_user.id} exported invite link in {m.chat.id}")
+        LOGGER.info(f"{m.from_user.id}, davet bağlantısını {m.chat.id} içinde dışa aktardı")
     except ChatAdminRequired:
         await m.reply_text(tlang(m, "admin.not_admin"))
     except ChatAdminInviteRequired:
@@ -533,12 +533,12 @@ async def setgtitle(_, m: Message):
 
     if not user.can_change_info and user.status != "creator":
         await m.reply_text(
-            "You don't have enough permission to use this command!",
+            "Bu komutu kullanmak için yeterli izniniz yok!",
         )
         return False
 
     if len(m.command) < 1:
-        return await m.reply_text("Please read /help for using it!")
+        return await m.reply_text("Kullanmak için lütfen /help basın!")
 
     gtit = m.text.split(None, 1)[1]
     try:
@@ -546,7 +546,7 @@ async def setgtitle(_, m: Message):
     except Exception as e:
         return await m.reply_text(f"Error: {e}")
     return await m.reply_text(
-        f"Successfully Changed Group Title From {m.chat.title} To {gtit}",
+        f"{m.chat.title} olan Grup Başlığı Başarıyla {gtit} Olarak Değiştirildi",
     )
 
 
@@ -556,12 +556,12 @@ async def setgdes(_, m: Message):
     user = await m.chat.get_member(m.from_user.id)
     if not user.can_change_info and user.status != "creator":
         await m.reply_text(
-            "You don't have enough permission to use this command!",
+            "Bu komutu kullanmak için yeterli izniniz yok!",
         )
         return False
 
     if len(m.command) < 1:
-        return await m.reply_text("Please read /help for using it!")
+        return await m.reply_text("Kullanmak için lütfen /help basın!")
 
     desp = m.text.split(None, 1)[1]
     try:
@@ -569,7 +569,7 @@ async def setgdes(_, m: Message):
     except Exception as e:
         return await m.reply_text(f"Error: {e}")
     return await m.reply_text(
-        f"Successfully Changed Group description From {m.chat.description} To {desp}",
+        f"Grup açıklaması {m.chat.description}'dan {desp}'e Başarıyla Değiştirildi",
     )
 
 
@@ -579,12 +579,12 @@ async def set_user_title(c: Alita, m: Message):
     user = await m.chat.get_member(m.from_user.id)
     if not user.can_promote_members and user.status != "creator":
         await m.reply_text(
-            "You don't have enough permission to use this command!",
+            "Bu komutu kullanmak için yeterli izniniz yok!",
         )
         return False
 
     if len(m.text.split()) == 1 and not m.reply_to_message:
-        return await m.reply_text("To whom??")
+        return await m.reply_text("Kime??")
 
     if m.reply_to_message:
         if len(m.text.split()) >= 2:
@@ -598,13 +598,13 @@ async def set_user_title(c: Alita, m: Message):
         return
 
     if not user_id:
-        return await m.reply_text("Cannot find user!")
+        return await m.reply_text("kullanıcı bulunamıyor!")
 
     if user_id == Config.BOT_ID:
-        return await m.reply_text("Huh, why ?")
+        return await m.reply_text("Hah neden ?")
 
     if not reason:
-        return await m.reply_text("Read /help please!")
+        return await m.reply_text("Okuyun /help basın lütfen!")
 
     from_user = await c.get_users(user_id)
     title = reason
@@ -613,7 +613,7 @@ async def set_user_title(c: Alita, m: Message):
     except Exception as e:
         return await m.reply_text(f"Error: {e}")
     return await m.reply_text(
-        f"Successfully Changed {from_user.mention}'s Admin Title To {title}",
+        f"{from_user.mention} adlı kullanıcının Yönetici Unvanı Başarıyla {title} Olarak Değiştirildi",
     )
 
 
@@ -622,20 +622,20 @@ async def setgpic(c: Alita, m: Message):
     user = await m.chat.get_member(m.from_user.id)
     if not user.can_change_info and user.status != "creator":
         await m.reply_text(
-            "You don't have enough permission to use this command!",
+            "Bu komutu kullanmak için yeterli izniniz yok!",
         )
         return False
     if not m.reply_to_message:
-        return await m.reply_text("Reply to a photo to set it as chat photo")
+        return await m.reply_text("Sohbet fotoğrafı olarak ayarlamak için bir fotoğrafı yanıtlayın")
     if not m.reply_to_message.photo and not m.reply_to_message.document:
-        return await m.reply_text("Reply to a photo to set it as chat photo")
+        return await m.reply_text("Bir fotoğrafı sohbet fotoğrafı olarak ayarlamak için yanıtlayın")
     photo = await m.reply_to_message.download()
     try:
         await m.chat.set_photo(photo)
     except Exception as e:
         remove(photo)
         return await m.reply_text(f"Error: {e}")
-    await m.reply_text("Successfully Changed Group Photo!")
+    await m.reply_text("Grup Fotoğrafı Başarıyla Değiştirildi!")
     remove(photo)
 
 
