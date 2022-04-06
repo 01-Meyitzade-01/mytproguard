@@ -37,10 +37,10 @@ async def antichanpin_cleanlinked(c: Alita, m: Message):
             LOGGER.info(f"CleanLinked: msgid-{m.message_id} cleaned in {m.chat.id}")
     except ChatAdminRequired:
         await m.reply_text(
-            "Disabled antichannelpin as I don't have enough admin rights!",
+            "Yeterli yönetici haklarına sahip olmadığım için antichannelpin devre dışı bırakıldı!",
         )
         pins_db.antichannelpin_off()
-        LOGGER.warning(f"Disabled antichannelpin in {m.chat.id} as i'm not an admin.")
+        LOGGER.warning(f"Yönetici olmadığım için {m.chat.id} içinde kanal engelleme özelliği devre dışı bırakıldı.")
     except Exception as ef:
         LOGGER.error(ef)
         LOGGER.error(format_exc())
@@ -109,8 +109,8 @@ async def bl_watcher(_, m: Message):
                     action = "muted"
                 await m.reply_text(
                     (
-                        f"Warnings {num}/{warn_settings['warn_limit']}\n"
-                        f"{(await mention_html(m.from_user.first_name, m.from_user.id))} has been <b>{action}!</b>"
+                        f"Uyarılar {num}/{warn_settings['warn_limit']}\n"
+                        f"{(bahis_html(m.from_user.first_name, m.from_user.id))} <b>{action} oldu!</b>"
                     ),
                 )
                 return
@@ -157,7 +157,7 @@ async def bl_watcher(_, m: Message):
             try:
                 await perform_action_blacklist(m, action, trigger)
                 LOGGER.info(
-                    f"{m.from_user.id} {action}ed for using blacklisted word {trigger} in {m.chat.id}",
+                    f"{m.from_user.id} {action}, {m.chat.id}'de kara listeye alınmış {trigger} kelimesini kullandığı için düzenlendi",
                 )
                 await m.delete()
             except RPCError as ef:
@@ -184,7 +184,7 @@ async def gban_watcher(c: Alita, m: Message):
     if _banned:
         try:
             await m.chat.ban_member(m.from_user.id)
-            await m.delete(m.message_id)  # Delete users message!
+            await m.delete(m.message_id)  # Kullanıcı mesajını sil!
             await m.reply_text(
                 (tlang(m, "antispam.watcher_banned")).format(
                     user_gbanned=(
@@ -193,13 +193,13 @@ async def gban_watcher(c: Alita, m: Message):
                     SUPPORT_GROUP=SUPPORT_GROUP,
                 ),
             )
-            LOGGER.info(f"Banned user {m.from_user.id} in {m.chat.id} due to antispam")
+            LOGGER.info(f"Antispam nedeniyle {m.chat.id} içinde {m.from_user.id} kullanıcısı yasaklandı")
             return
         except (ChatAdminRequired, UserAdminInvalid):
             # Bot not admin in group and hence cannot ban users!
             # TO-DO - Improve Error Detection
             LOGGER.info(
-                f"User ({m.from_user.id}) is admin in group {m.chat.title} ({m.chat.id})",
+                f"Kullanıcı ({m.from_user.id}), {m.chat.title} ({m.chat.id}) grubunda yöneticidir)",
             )
         except RPCError as ef:
             await c.send_message(
@@ -219,11 +219,11 @@ async def bl_chats_watcher(c: Alita, m: Message):
     await c.send_message(
         m.chat.id,
         (
-            "This is a blacklisted group!\n"
-            f"For Support, Join @{SUPPORT_GROUP}\n"
-            "Now, I'm outta here!"
+            "Bu kara listeye alınmış bir gruptur!\n"
+            f"Destek için @{SUPPORT_GROUP}'a Katılın\n"
+            "Şimdi, buradan gidiyorum!"
         ),
     )
     await c.leave_chat(m.chat.id)
-    LOGGER.info(f"Joined and Left blacklisted chat {m.chat.id}")
+    LOGGER.info(f"Kara listeye alınan sohbete katıldı ve ayrıldı {m.chat.id}")
     return
