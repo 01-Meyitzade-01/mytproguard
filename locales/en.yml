@@ -509,13 +509,12 @@ strings:
       Commands available:
        × /start: botu başlat
        × /help: Sana bu mesajı ver.
-       × /donate: İçerik üreticimi nasıl destekleyeceğimle ilgili bilgiler!
        Tüm komutlar / ile kullanılabilir veya !.
     no_admin_cmd_perm: "Yönetici komutu kullanamazsınız!"
     no_perm_admin: "bunu yapmaya iznim yok"
     no_results: "Sonuç bulunamadı."
     some_error: |-
-      Some error occured, report to @{SUPPORT_GROUP}
+      Bazı hatalar oluştu, @{SUPPORT_GROUP} adresine bildirin
       <b>Error:</b> <code>{ef}</code>
     something_wrong: "Bir şeyler yanlış gitti!"
   langs:
