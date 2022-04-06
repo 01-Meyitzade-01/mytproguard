@@ -52,12 +52,12 @@ async def gen_start_kb(q: Message or CallbackQuery):
                     "url",
                 ),
             ],
-            [(f"📚 {(tlang(q, 'start.commands_btn'))}", "Command")],
+            [(f"📚 {(tlang(q, 'start.commands_btn'))}", "commands")],
             [
-                (f"🌐 {(tlang(q, 'start.language_btn'))}", "Language"),
+                (f"🌐 {(tlang(q, 'start.language_btn'))}", "chlang"),
                 (
                     f"🗃️ {(tlang(q, 'start.source_code'))}",
-                    "https://t.me/meyitzade47",
+                    "https://github.com/DivideProjects/Alita_Robot",
                     "url",
                 ),
             ],
@@ -95,7 +95,7 @@ async def get_private_note(c: Alita, m: Message, help_option: str):
     msgtype = getnotes["msgtype"]
     if not msgtype:
         await m.reply_text(
-            "<b>Hata:</b> Bu not için bir tür bulunamadı!!",
+            "<b>Error:</b> Cannot find a type for this note!!",
             quote=True,
         )
         return
@@ -135,7 +135,7 @@ async def get_private_note(c: Alita, m: Message, help_option: str):
                 return
             except RPCError as ef:
                 await m.reply_text(
-                    "Bir hata oluştu! Not ayrıştırılamıyor.",
+                    "An error has occured! Cannot parse note.",
                     quote=True,
                 )
                 LOGGER.error(ef)
@@ -185,7 +185,7 @@ async def get_private_note(c: Alita, m: Message, help_option: str):
                 caption=teks,
             )
     LOGGER.info(
-        f"{m.from_user.id}, {m.chat.id} içinde {note_hash} (tür - {getnotes}) özel notunu getirdi",
+        f"{m.from_user.id} fetched privatenote {note_hash} (type - {getnotes}) in {m.chat.id}",
     )
     return
 
@@ -196,12 +196,12 @@ async def get_private_rules(_, m: Message, help_option: str):
     chat_title = Chats.get_chat_info(chat_id)["chat_name"]
     if not rules:
         await m.reply_text(
-            "Bu grubun Adminleri herhangi bir kural belirlemedi, bu sohbetin adabını bozduğunuz anlamına gelmez.!",
+            "The Admins of that group have not setup any rules, that dosen't mean you break the decorum of the chat!",
             quote=True,
         )
         return ""
     await m.reply_text(
-        f"""<b>{escape(chat_title)} için kurallar are</b>:\n"""
+        f"""The rules for <b>{escape(chat_title)} are</b>:\n
 {rules}
 """,
         quote=True,
@@ -211,7 +211,7 @@ async def get_private_rules(_, m: Message, help_option: str):
 
 
 async def get_help_msg(m: Message or CallbackQuery, help_option: str):
-    """help_msg ve klavyesini almak için yardımcı fonksiyon."""
+    """Helper function for getting help_msg and it's keyboard."""
     help_msg = None
     help_kb = None
     help_cmd_keys = sorted(
@@ -237,7 +237,7 @@ async def get_help_msg(m: Message or CallbackQuery, help_option: str):
             + tlang(m, help_option_value)
         )
         LOGGER.info(
-            f"{m.from_user.id}, {m.chat.id}'de {help_option} için yardım aldı",
+            f"{m.from_user.id} fetched help for {help_option} in {m.chat.id}",
         )
     else:
         help_msg = tlang(m, "general.commands_available")
