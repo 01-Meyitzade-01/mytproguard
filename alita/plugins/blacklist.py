@@ -60,9 +60,9 @@ async def add_blacklist(_, m: Message):
     if already_added_words:
         rep_text = (
             ", ".join([f"<code>{i}</code>" for i in bl_words])
-            + " already added in blacklist, skipped them!"
+            + " zaten kara listeye eklendi, atlandı!"
         )
-    LOGGER.info(f"{m.from_user.id} added new blacklists ({bl_words}) in {m.chat.id}")
+    LOGGER.info(f"{m.from_user.id}, {m.chat.id} içinde yeni kara listeler ({bl_words}) ekledi")
     await m.reply_text(
         (tlang(m, "blacklist.added_blacklist")).format(
             trigger=", ".join(f"<code>{i}</code>" for i in bl_words),
@@ -88,7 +88,7 @@ async def blacklistreason(_, m: Message):
         reason = m.text.split(None, 1)[1]
         db.set_reason(reason)
         await m.reply_text(
-            f"Updated reason for blacklists warn is:\n<code>{reason}</code>",
+            f"Kara liste uyarısının güncellenmiş nedeni:\n<code>{reason}</code>",
         )
     return
 
@@ -114,19 +114,19 @@ async def rm_blacklist(_, m: Message):
         db.remove_blacklist(bl_word)
 
     if non_found_words == bl_words:
-        return await m.reply_text("Blacklists not found!")
+        return await m.reply_text("Kara listeler bulunamadı!")
 
     if non_found_words:
         rep_text = (
-            "Could not find " + ", ".join(f"<code>{i}</code>" for i in non_found_words)
+            "Bulunamadı " + ", ".join(f"<code>{i}</code>" for i in non_found_words)
         ) + " in blcklisted words, skipped them."
 
-    LOGGER.info(f"{m.from_user.id} removed blacklists ({bl_words}) in {m.chat.id}")
+    LOGGER.info(f"{m.from_user.id}, {m.chat.id} içeriğindeki kara listeleri ({bl_words}) kaldırma")
     await m.reply_text(
         (tlang(m, "blacklist.rm_blacklist")).format(
             bl_words=", ".join(f"<code>{i}</code>" for i in bl_words),
         )
-        + (f"\n{rep_text}" if rep_text else ""),
+        + (f"\n{rep_text}" eğer rep_text else ""),
     )
 
     await m.stop_propagation()
@@ -152,14 +152,14 @@ async def set_bl_action(_, m: Message):
             return
         db.set_action(action)
         LOGGER.info(
-            f"{m.from_user.id} set blacklist action to '{action}' in {m.chat.id}",
+            f"{m.from_user.id}, {m.chat.id}'de kara liste eylemini '{action}' olarak ayarla",
         )
         await m.reply_text(
             (tlang(m, "blacklist.action_set")).format(action=action),
         )
     elif len(m.text.split()) == 1:
         action = db.get_action()
-        LOGGER.info(f"{m.from_user.id} checking blacklist action in {m.chat.id}")
+        LOGGER.info(f"{m.from_user.id}, {m.chat.id} içindeki kara liste işlemini kontrol ediyor")
         await m.reply_text(
             (tlang(m, "blacklist.action_get")).format(action=action),
         )
@@ -183,7 +183,7 @@ async def rm_allblacklist(_, m: Message):
     await m.reply_text(
         "Are you sure you want to clear all blacklists?",
         reply_markup=ikb(
-            [[("⚠️ Confirm", "rm_allblacklist"), ("❌ Cancel", "close_admin")]],
+            [[("⚠️ Onaylama", "rm_allblacklist"), ("❌ İPTAL", "close_admin")]],
         ),
     )
     return
@@ -196,20 +196,20 @@ async def rm_allbl_callback(_, q: CallbackQuery):
     user_status = (await q.message.chat.get_member(user_id)).status
     if user_status not in {"creator", "administrator"}:
         await q.answer(
-            "You're not even an admin, don't try this explosive shit!",
+            "Yönetici bile değilsin, bu patlayıcı şeyi deneme!",
             show_alert=True,
         )
         return
     if user_status != "creator":
         await q.answer(
-            "You're just an admin, not owner\nStay in your limits!",
+            "Sen sadece bir yöneticisin, sahip değil\sınırlarında kal!",
             show_alert=True,
         )
         return
     db.rm_all_blacklist()
     await q.message.delete()
-    LOGGER.info(f"{user_id} removed all blacklists in {q.message.chat.id}")
-    await q.answer("Cleared all Blacklists!", show_alert=True)
+    LOGGER.info(f"{user_id}, {q.message.chat.id} içindeki tüm kara listeleri kaldırdı")
+    await q.answer("Tüm Kara Listeler Temizlendi!", show_alert=True)
     return
 
 
