@@ -79,10 +79,10 @@ async def gban(c: Alita, m: Message):
             ),
         )
     except UserIsBlocked:
-        LOGGER.error("Could not send PM Message, user blocked bot")
+        LOGGER.error("PM Mesajı gönderilemedi, kullanıcı tarafından engellenen bot")
     except PeerIdInvalid:
         LOGGER.error(
-            "Haven't seen this user anywhere, mind forwarding one of their messages to me?",
+            "Bu kullanıcıyı hiçbir yerde görmedim, mesajlarından birini bana iletmeyi unutmayın?",
         )
     except Exception as ef:  # TO DO: Improve Error Detection
         LOGGER.error(ef)
@@ -146,7 +146,7 @@ async def gban_count(_, m: Message):
     await m.reply_text(
         (tlang(m, "antispam.num_gbans")).format(count=(db.count_gbans())),
     )
-    LOGGER.info(f"{m.from_user.id} counting gbans in {m.chat.id}")
+    LOGGER.info(f"{m.from_user.id}, {m.chat.id} içinde gban'ları sayıyor")
     return
 
 
@@ -164,7 +164,7 @@ async def gban_list(_, m: Message):
     for user in banned_users:
         banfile += f"[x] <b>{Users.get_user_info(user['_id'])['name']}</b> - <code>{user['_id']}</code>\n"
         if user["reason"]:
-            banfile += f"<b>Reason:</b> {user['reason']}\n"
+            banfile += f"<b>Nedeni:</b> {username['reason']}\n"
 
     try:
         await m.reply_text(banfile)
