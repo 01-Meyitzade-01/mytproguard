@@ -41,13 +41,13 @@ async def tban_usr(c: Alita, m: Message):
         await m.reply_text("Cannot find user to ban")
         return
     if user_id == Config.BOT_ID:
-        await m.reply_text("Huh, why would I ban myself?")
+        await m.reply_text("of, neden kendimi yasaklayayım ki?🙄")
         await m.stop_propagation()
 
     if user_id in SUPPORT_STAFF:
         await m.reply_text(tlang(m, "admin.support_cannot_restrict"))
         LOGGER.info(
-            f"{m.from_user.id} trying to ban {user_id} (SUPPORT_STAFF) in {m.chat.id}",
+            f"{m.from_user.id}, {m.chat.id} içinde {user_id} (SUPPORT_STAFF)'ı yasaklamaya çalışıyor",
         )
         await m.stop_propagation()
 
@@ -58,11 +58,11 @@ async def tban_usr(c: Alita, m: Message):
     elif not m.reply_to_message and len(m.text.split()) >= 3:
         reason = m.text.split(None, 2)[2]
     else:
-        await m.reply_text("Read /help !!")
+        await m.reply_text("Göz at 👉 /help !!")
         return
 
     if not reason:
-        await m.reply_text("You haven't specified a time to ban this user for!")
+        await m.reply_text("Bu kullanıcıyı yasaklamak için bir zaman belirtmediniz!")
         return
 
     split_reason = reason.split(None, 1)
@@ -91,7 +91,7 @@ async def tban_usr(c: Alita, m: Message):
             banned=(await mention_html(user_first_name, user_id)),
             chat_title=m.chat.title,
         )
-        txt += f"\n<b>Reason</b>: {reason}" if reason else ""
+        txt += f"\n<b>Neden</b>: {reason}" eğer başka bir sebep ise bildir""
         keyboard = InlineKeyboardMarkup(
             [
                 [
@@ -107,7 +107,7 @@ async def tban_usr(c: Alita, m: Message):
         await m.reply_text(tlang(m, "admin.not_admin"))
     except PeerIdInvalid:
         await m.reply_text(
-            "I have not seen this user yet...!\nMind forwarding one of their message so I can recognize them?",
+            "Bu kullanıcıyı henüz görmedim...!\nOnları tanıyabilmem için mesajlarından birini iletmeyi düşünüyorum?",
         )
     except UserAdminInvalid:
         await m.reply_text(tlang(m, "admin.user_admin_invalid"))
@@ -137,16 +137,16 @@ async def stban_usr(c: Alita, m: Message):
         return
 
     if not user_id:
-        await m.reply_text("Cannot find user to ban")
+        await m.reply_text("banlanacak kullanıcı bulunamadı")
         return
     if user_id == Config.BOT_ID:
-        await m.reply_text("Huh, why would I ban myself?")
+        await m.reply_text("of, neden kendimi yasaklayayım ki?🙄")
         await m.stop_propagation()
 
     if user_id in SUPPORT_STAFF:
         await m.reply_text(tlang(m, "admin.support_cannot_restrict"))
         LOGGER.info(
-            f"{m.from_user.id} trying to ban {user_id} (SUPPORT_STAFF) in {m.chat.id}",
+            f"{m.from_user.id}, {m.chat.id} içinde {user_id} (SUPPORT_STAFF)'ı yasaklamaya çalışıyor",
         )
         await m.stop_propagation()
 
@@ -159,7 +159,7 @@ async def stban_usr(c: Alita, m: Message):
         return
 
     if not reason:
-        await m.reply_text("You haven't specified a time to ban this user for!")
+        await m.reply_text("Bu kullanıcıyı yasaklamak için bir zaman belirtmediniz!")
         return
 
     split_reason = reason.split(None, 1)
@@ -192,7 +192,7 @@ async def stban_usr(c: Alita, m: Message):
         await m.reply_text(tlang(m, "admin.not_admin"))
     except PeerIdInvalid:
         await m.reply_text(
-            "I have not seen this user yet...!\nMind forwarding one of their message so I can recognize them?",
+            "Bu kullanıcıyı henüz görmedim...!\nOnları tanıyabilmem için mesajlarından birini iletmeyi düşünüyorum?",
         )
     except UserAdminInvalid:
         await m.reply_text(tlang(m, "admin.user_admin_invalid"))
@@ -218,7 +218,7 @@ async def dtban_usr(c: Alita, m: Message):
 
     if not m.reply_to_message:
         await m.reply_text(
-            "Reply to a message with this command to temp ban and delete the message.",
+            "Mesajı geçici olarak banlamak ve silmek için bu komutla bir mesaja cevap verin.",
         )
         await m.stop_propagation()
 
@@ -235,7 +235,7 @@ async def dtban_usr(c: Alita, m: Message):
     if user_id in SUPPORT_STAFF:
         await m.reply_text(tlang(m, "admin.support_cannot_restrict"))
         LOGGER.info(
-            f"{m.from_user.id} trying to ban {user_id} (SUPPORT_STAFF) in {m.chat.id}",
+            f"{m.from_user.id}, {m.chat.id} içinde {user_id} (SUPPORT_STAFF)'ı yasaklamaya çalışıyor",
         )
         await m.stop_propagation()
 
@@ -248,7 +248,7 @@ async def dtban_usr(c: Alita, m: Message):
         return
 
     if not reason:
-        await m.reply_text("You haven't specified a time to ban this user for!")
+        await m.reply_text("Bu kullanıcıyı yasaklamak için bir zaman belirlemediniz!")
         return
 
     split_reason = reason.split(None, 1)
@@ -278,7 +278,7 @@ async def dtban_usr(c: Alita, m: Message):
             banned=(await mention_html(user_first_name, user_id)),
             chat_title=m.chat.title,
         )
-        txt += f"\n<b>Reason</b>: {reason}" if reason else ""
+        txt += f"\n<b>Sebep</b>: {reason}" başka bir sebep ise bildir""
         keyboard = InlineKeyboardMarkup(
             [
                 [
@@ -294,7 +294,7 @@ async def dtban_usr(c: Alita, m: Message):
         await m.reply_text(tlang(m, "admin.not_admin"))
     except PeerIdInvalid:
         await m.reply_text(
-            "I have not seen this user yet...!\nMind forwarding one of their message so I can recognize them?",
+            "Bu kullanıcıyı henüz görmedim...!\nOnları tanıyabilmem için mesajlarından birini iletmeyi düşünüyorum?",
         )
     except UserAdminInvalid:
         await m.reply_text(tlang(m, "admin.user_admin_invalid"))
@@ -334,17 +334,17 @@ async def kick_usr(c: Alita, m: Message):
         return
 
     if not user_id:
-        await m.reply_text("Cannot find user to kick")
+        await m.reply_text("Tekme atacak kullanıcı bulunamadı")
         return
 
     if user_id == Config.BOT_ID:
-        await m.reply_text("Huh, why would I kick myself?")
+        await m.reply_text("of, neden kendimi tekmeleyeyim ki?🙄")
         await m.stop_propagation()
 
     if user_id in SUPPORT_STAFF:
         await m.reply_text(tlang(m, "admin.support_cannot_restrict"))
         LOGGER.info(
-            f"{m.from_user.id} trying to kick {user_id} (SUPPORT_STAFF) in {m.chat.id}",
+            f"{m.from_user.id}, {m.chat.id} içinde {user_id} (SUPPORT_STAFF) atmaya çalışıyor",
         )
         await m.stop_propagation()
 
@@ -358,7 +358,7 @@ async def kick_usr(c: Alita, m: Message):
         await m.stop_propagation()
 
     try:
-        LOGGER.info(f"{m.from_user.id} kicked {user_id} in {m.chat.id}")
+        LOGGER.info(f"{m.from_user.id}, {m.chat.id} içinde {user_id} kullanıcısını attı")
         await m.chat.ban_member(user_id)
         txt = (tlang(m, "admin.kick.kicked_user")).format(
             admin=(await mention_html(m.from_user.first_name, m.from_user.id)),
@@ -372,7 +372,7 @@ async def kick_usr(c: Alita, m: Message):
         await m.reply_text(tlang(m, "admin.not_admin"))
     except PeerIdInvalid:
         await m.reply_text(
-            "I have not seen this user yet...!\nMind forwarding one of their message so I can recognize them?",
+            "Bu kullanıcıyı henüz görmedim...!\nOnları tanıyabilmem için mesajlarından birini iletmeyi düşünüyorum?",
         )
     except UserAdminInvalid:
         await m.reply_text(tlang(m, "admin.user_admin_invalid"))
@@ -407,13 +407,13 @@ async def skick_usr(c: Alita, m: Message):
         return
 
     if user_id == Config.BOT_ID:
-        await m.reply_text("Huh, why would I kick myself?")
+        await m.reply_text("of, neden kendimi tekmeleyeyim ki?🙄")
         await m.stop_propagation()
 
     if user_id in SUPPORT_STAFF:
         await m.reply_text(tlang(m, "admin.support_cannot_restrict"))
         LOGGER.info(
-            f"{m.from_user.id} trying to skick {user_id} (SUPPORT_STAFF) in {m.chat.id}",
+            f"{m.from_user.id}, {m.chat.id} içinde {user_id} (SUPPORT_STAFF) atlamaya çalışıyor",
         )
         await m.stop_propagation()
 
@@ -427,7 +427,7 @@ async def skick_usr(c: Alita, m: Message):
         await m.stop_propagation()
 
     try:
-        LOGGER.info(f"{m.from_user.id} skicked {user_id} in {m.chat.id}")
+        LOGGER.info(f"{m.from_user.id}, {m.chat.id} içinde {user_id} kullanıcısını attı")
         await m.chat.ban_member(user_id)
         await m.delete()
         if m.reply_to_message:
@@ -437,7 +437,7 @@ async def skick_usr(c: Alita, m: Message):
         await m.reply_text(tlang(m, "admin.not_admin"))
     except PeerIdInvalid:
         await m.reply_text(
-            "I have not seen this user yet...!\nMind forwarding one of their message so I can recognize them?",
+            "Bu kullanıcıyı henüz görmedim...!\nOnları tanıyabilmem için mesajlarından birini iletmeyi düşünüyorum?",
         )
     except UserAdminInvalid:
         await m.reply_text(tlang(m, "admin.user_admin_invalid"))
@@ -462,7 +462,7 @@ async def dkick_usr(c: Alita, m: Message):
         await m.reply_text(tlang(m, "admin.kick.no_target"))
         return
     if not m.reply_to_message:
-        return await m.reply_text("Reply to a message to delete it and kick the user!")
+        return await m.reply_text("Silmek için bir mesajı yanıtlayın ve kullanıcıyı tekmeleyin!")
 
     reason = None
 
@@ -470,17 +470,17 @@ async def dkick_usr(c: Alita, m: Message):
     user_first_name = m.reply_to_message.from_user.first_name
 
     if not user_id:
-        await m.reply_text("Cannot find user to kick")
+        await m.reply_text("Tekme atacak kullanıcı bulunamadı")
         return
 
     if user_id == Config.BOT_ID:
-        await m.reply_text("Huh, why would I kick myself?")
+        await m.reply_text("of, neden kendimi tekmeleyeyim ki?🙄")
         await m.stop_propagation()
 
     if user_id in SUPPORT_STAFF:
         await m.reply_text(tlang(m, "admin.support_cannot_restrict"))
         LOGGER.info(
-            f"{m.from_user.id} trying to dkick {user_id} (SUPPORT_STAFF) in {m.chat.id}",
+            f"{m.from_user.id}, {m.chat.id} içinde {user_id} (SUPPORT_STAFF)'ı gizlemeye çalışıyor",
         )
         await m.stop_propagation()
 
@@ -502,14 +502,14 @@ async def dkick_usr(c: Alita, m: Message):
             kicked=(await mention_html(user_first_name, user_id)),
             chat_title=m.chat.title,
         )
-        txt += f"\n<b>Reason</b>: {reason}" if reason else ""
+        txt += f"\n<b>Sebep</b>: {reason}" başka bir sebep ise bildir""
         await c.send_message(m.chat.id, txt)
         await m.chat.unban_member(user_id)
     except ChatAdminRequired:
         await m.reply_text(tlang(m, "admin.not_admin"))
     except PeerIdInvalid:
         await m.reply_text(
-            "I have not seen this user yet...!\nMind forwarding one of their message so I can recognize them?",
+            "Bu kullanıcıyı henüz görmedim...!\nOnları tanıyabilmem için mesajlarından birini iletmeyi düşünüyorum?",
         )
     except UserAdminInvalid:
         await m.reply_text(tlang(m, "admin.user_admin_invalid"))
@@ -559,7 +559,7 @@ async def unban_usr(c: Alita, m: Message):
             unbanned=(await mention_html(user_first_name, user_id)),
             chat_title=m.chat.title,
         )
-        txt += f"\n<b>Reason</b>: {reason}" if reason else ""
+        txt += f"\n<b>Sebep</b>: {reason}" başka bir sebep ise ""
         await m.reply_text(txt)
     except ChatAdminRequired:
         await m.reply_text(tlang(m, "admin.not_admin"))
@@ -599,13 +599,13 @@ async def sban_usr(c: Alita, m: Message):
         await m.reply_text("That's an admin!")
         await m.stop_propagation()
     if user_id == Config.BOT_ID:
-        await m.reply_text("Huh, why would I ban myself?")
+        await m.reply_text("of, neden kendimi yasaklayayım ki?🙄")
         await m.stop_propagation()
 
     if user_id in SUPPORT_STAFF:
         await m.reply_text(tlang(m, "admin.support_cannot_restrict"))
         LOGGER.info(
-            f"{m.from_user.id} trying to sban {user_id} (SUPPORT_STAFF) in {m.chat.id}",
+            f"{m.from_user.id}, {m.chat.id} içinde {user_id} (SUPPORT_STAFF) adlı kişiye sban yapmaya çalışıyor",
         )
         await m.stop_propagation()
 
@@ -619,7 +619,7 @@ async def sban_usr(c: Alita, m: Message):
         await m.stop_propagation()
 
     try:
-        LOGGER.info(f"{m.from_user.id} sbanned {user_id} in {m.chat.id}")
+        LOGGER.info(f"{m.from_user.id}, {m.chat.id} içinde {user_id} kullanıcısını yasakladı")
         await m.chat.ban_member(user_id)
         await m.delete()
         if m.reply_to_message:
@@ -628,7 +628,7 @@ async def sban_usr(c: Alita, m: Message):
         await m.reply_text(tlang(m, "admin.not_admin"))
     except PeerIdInvalid:
         await m.reply_text(
-            "I have not seen this user yet...!\nMind forwarding one of their message so I can recognize them?",
+            "Bu kullanıcıyı henüz görmedim...!\nOnları tanıyabilmem için mesajlarından birini iletmeyi düşünüyorum?",
         )
     except UserAdminInvalid:
         await m.reply_text(tlang(m, "admin.user_admin_invalid"))
@@ -653,7 +653,7 @@ async def dban_usr(c: Alita, m: Message):
         await m.stop_propagation()
 
     if not m.reply_to_message:
-        return await m.reply_text("Reply to a message to delete it and ban the user!")
+        return await m.reply_text("Silmek ve kullanıcıyı yasaklamak için bir mesajı yanıtlayın!")
 
     if m.reply_to_message and not m.reply_to_message.from_user:
         user_id, user_first_name = (
@@ -667,19 +667,19 @@ async def dban_usr(c: Alita, m: Message):
         )
 
     if not user_id:
-        await m.reply_text("Cannot find user to ban")
+        await m.reply_text("banlanacak kullanıcı bulunamadı")
         return
     if user_id == m.chat.id:
-        await m.reply_text("That's an admin!")
+        await m.reply_text("bu bir yönetici!")
         await m.stop_propagation()
     if user_id == Config.BOT_ID:
-        await m.reply_text("Huh, why would I ban myself?")
+        await m.reply_text("of, neden kendimi yasaklayayım ki?🙄")
         await m.stop_propagation()
 
     if user_id in SUPPORT_STAFF:
         await m.reply_text(tlang(m, "admin.support_cannot_restrict"))
         LOGGER.info(
-            f"{m.from_user.id} trying to dban {user_id} (SUPPORT_STAFF) in {m.chat.id}",
+            f"{m.from_user.id}, {m.chat.id içinde {user_id} (SUPPORT_STAFF) dban'ına girmeye çalışıyor}",
         )
         await m.stop_propagation()
 
@@ -705,7 +705,7 @@ async def dban_usr(c: Alita, m: Message):
             banned=m.reply_to_message.from_user.mention,
             chat_title=m.chat.title,
         )
-        txt += f"\n<b>Reason</b>: {reason}" if reason else ""
+        txt += f"\n<b>Sebep</b>: {reason}" eğer sebep ise bildirin ""
         keyboard = InlineKeyboardMarkup(
             [
                 [
@@ -721,7 +721,7 @@ async def dban_usr(c: Alita, m: Message):
         await m.reply_text(tlang(m, "admin.not_admin"))
     except PeerIdInvalid:
         await m.reply_text(
-            "I have not seen this user yet...!\nMind forwarding one of their message so I can recognize them?",
+            "Bu kullanıcıyı henüz görmedim...!\nOnları tanıyabilmem için mesajlarından birini iletmeyi düşünüyorum?",
         )
     except UserAdminInvalid:
         await m.reply_text(tlang(m, "admin.user_admin_invalid"))
@@ -757,19 +757,19 @@ async def ban_usr(c: Alita, m: Message):
             return
 
     if not user_id:
-        await m.reply_text("Cannot find user to ban")
+        await m.reply_text("banlanacak kullanıcı bulunamadı")
         await m.stop_propagation()
     if user_id == m.chat.id:
-        await m.reply_text("That's an admin!")
+        await m.reply_text("bu bir yönetici!")
         await m.stop_propagation()
     if user_id == Config.BOT_ID:
-        await m.reply_text("Huh, why would I ban myself?")
+        await m.reply_text("of, neden kendimi yasaklayayım ki?🙄")
         await m.stop_propagation()
 
     if user_id in SUPPORT_STAFF:
         await m.reply_text(tlang(m, "admin.support_cannot_restrict"))
         LOGGER.info(
-            f"{m.from_user.id} trying to ban {user_id} (SUPPORT_STAFF) in {m.chat.id}",
+            f"{m.from_user.id}, {m.chat.id} içinde {user_id} (SUPPORT_STAFF)'ı yasaklamaya çalışıyor",
         )
         await m.stop_propagation()
 
@@ -793,14 +793,14 @@ async def ban_usr(c: Alita, m: Message):
             reason = m.text.split(None, 2)[2]
 
     try:
-        LOGGER.info(f"{m.from_user.id} banned {user_id} in {m.chat.id}")
+        LOGGER.info(f"{m.from_user.id}, {m.chat.id} içinde {user_id} kullanıcıyı yasakladı")
         await m.chat.ban_member(user_id)
         txt = (tlang(m, "admin.ban.banned_user")).format(
             admin=m.from_user.mention,
             banned=(await mention_html(user_first_name, user_id)),
             chat_title=m.chat.title,
         )
-        txt += f"\n<b>Reason</b>: {reason}" if reason else ""
+        txt += f"\n<b>Sebep</b>: {reason}" başka bir sebep ise bildir""
         keyboard = InlineKeyboardMarkup(
             [
                 [
@@ -816,7 +816,7 @@ async def ban_usr(c: Alita, m: Message):
         await m.reply_text(tlang(m, "admin.not_admin"))
     except PeerIdInvalid:
         await m.reply_text(
-            "I have not seen this user yet...!\nMind forwarding one of their message so I can recognize them?",
+            "Bu kullanıcıyı henüz görmedim...!\nOnları tanıyabilmem için mesajlarından birini iletmeyi düşünüyorum?",
         )
     except UserAdminInvalid:
         await m.reply_text(tlang(m, "admin.user_admin_invalid"))
@@ -842,7 +842,7 @@ async def unbanbutton(c: Alita, q: CallbackQuery):
 
     if not user.can_restrict_members and q.from_user.id != OWNER_ID:
         await q.answer(
-            "You don't have enough permission to do this!\nStay in your limits!",
+            "Bunu yapmak için yeterli izniniz yok!\nSınırlarınızda kalın!",
             show_alert=True,
         )
         return
@@ -853,7 +853,7 @@ async def unbanbutton(c: Alita, q: CallbackQuery):
     except RPCError as e:
         await q.message.edit_text(f"Error: {e}")
         return
-    await q.message.edit_text(f"{q.from_user.mention} unbanned {doneto}!")
+    await q.message.edit_text(f"{q.from_user.mention} yasağı kaldırıldı {doneto}!")
     return
 
 
@@ -865,8 +865,8 @@ async def kickme(_, m: Message):
     try:
         LOGGER.info(f"{m.from_user.id} kickme used by {m.from_user.id} in {m.chat.id}")
         await m.chat.ban_member(m.from_user.id)
-        txt = "Why not let me help you!"
-        txt += f"\n<b>Reason</b>: {reason}" if reason else ""
+        txt = "neden sana yardım etmeme izin vermiyorsun!"
+        txt += f"\n<b>Sebep</b>: {reason}" başka bir sebep ise bildir""
         await m.reply_text(txt)
         await m.chat.unban_member(m.from_user.id)
     except RPCError as ef:
