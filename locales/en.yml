@@ -1,367 +1,368 @@
 ---
 main:
   lang_sample: "US English"
-  language_flag: "🇺🇸"
+  language_flag: "🇱🇷"
   language_name: English
 strings:
   plugins:
     admin:
-      main: "Admin"
+      main: "yönetici"
       help: |-
-        Lazy to promote or demote someone for admins? Want to see basic information about chat?
-        All stuff about chatroom such as admin lists, pinning or grabbing an invite link can be done easily using the bot.
-        **User Commands:**
-        × /adminlist: List all the admins in the Group.
-        **Admin only:**
-        × /invitelink: Gets chat invitelink.
-        × /promote: Promotes the user replied to or tagged (supports with title).
-        × /fullpromote: Fully Promotes the user replied to or tagged (supports with title).
-        × /demote: Demotes the user replied to or tagged.
-        × /admincache: Reloads the List of all the admins in the Group.
-        × /zombies: Bans all the deleted accounts. (owner only)
-        × /title: sets a custom title for an admin that the bot promoted.
-        × /disable <commandname>: Stop users from using "commandname" in this group.
-        × /enable <item name>: Allow users from using "commandname" in this group.
-        × /disableable: List all disableable commands.
-        × /disabledel <yes/off>: Delete disabled commands when used by non-admins.
-        × /disabled: List the disabled commands in this chat.
-        × /enableall: enable all disabled commands.
+        Yöneticiler için birini terfi ettirmek veya rütbesini düşürmek için tembel misiniz? Sohbet hakkında temel bilgileri görmek ister misiniz?
+        Yönetici listeleri, bir davet bağlantısını sabitleme veya kapma gibi sohbet odasıyla ilgili her şey bot kullanılarak kolayca yapılabilir..
+        **Kullanıcı Komutları:**
+        × /adminlist: Gruptaki tüm yöneticileri listele.
+        **Yalnızca yönetici:**
+        × /invitelink: Sohbet davet bağlantısını alır.
+        × /promote: Yanıtlanan veya etiketlenen kullanıcıyı tanıtır (başlıkla desteklenir).
+        × /fullpromote: Tam Kullanıcının yanıtladığı veya etiketlediği kullanıcının tanıtımını yapar (başlıkla desteklenir).
+        × /demote: Kullanıcının yanıtladığı veya etiketlediği kullanıcının değerini düşürür.
+        × /admincache: Gruptaki tüm yöneticilerin Listesini yeniden yükler.
+        × /zombies: Silinen tüm hesapları yasaklar. (yalnızca sahibi)
+        × /title: botun terfi ettirdiği bir yönetici için özel bir başlık ayarlar.
+        × /disable <commandname>: Kullanıcıların bu grupta "commandname" kullanmasını durdurun.
+        × /enable <item name>: Kullanıcıların bu grupta "commandname" kullanmasına izin ver.
+        × /disableable: Tüm devre dışı bırakılabilir komutları listele.
+        × /disabledel <yes/off>: Yönetici olmayanlar tarafından kullanıldığında devre dışı bırakılan komutları sil.
+        × /disabled: Bu sohbette devre dışı bırakılan komutları listeleyin.
+        × /enableall: tüm devre dışı bırakılmış komutları etkinleştir.
 
-        **Example:**
-        `/promote @username`: this promotes a user to admin.
+        **Örnek:**
+        `/promote @username`: bu, bir kullanıcıyı yöneticiliğe yükseltir.
     approve:
-      main: "Approve"
+      main: "approve"
       help: |-
-        Sometimes, you might trust a user not to send unwanted content.
-        Maybe not enough to make them admin, but you might be ok with locks, blacklists, and antiflood not applying to them.
-        That's what approvals are for - approve trustworthy users to allow them to send stuff without restrictions!
-        **Admin commands:**
-        × /approval: Check a user's approval status in this chat.
-        × /approve: Approve of a user. Locks, blacklists, and antiflood won't apply to them anymore.
-        × /unapprove: Unapprove of a user. They will now be subject to blocklists.
-        × /approved: List all approved users.
-        × /unapproveall: Unapprove *ALL* users in a chat. This cannot be undone!
-        **Example:**
-        `/approve @username`: this approves a user in the chat.
+        Bazen bir kullanıcıya istenmeyen içerik göndermeyeceğine güvenebilirsiniz..
+        Belki onları yönetici yapmak için yeterli değil, ancak kilitler, kara listeler ve bunlara uygulanmaması konusunda sorun yaşamayabilirsiniz..
+        Onaylar bunun içindir - güvenilir kullanıcıları kısıtlama olmaksızın göndermelerine izin vermek için onaylayın!
+        **Yönetici komutları:**
+        × /approval: Bu sohbette bir kullanıcının onay durumunu kontrol edin.
+        × /approve: Bir kullanıcının onayı. Kilitler, kara listeler ve sel önleme artık onlar için geçerli olmayacak.
+        × /unapprove: Unapprove of a user. Artık blok listelerine tabi olacaklar.
+        × /approved: Tüm onaylı kullanıcıları listele.
+        × /unapproveall: Bir sohbette *TÜM* kullanıcıları onaylamayın. Bu geri alınamaz!
+        **Örnek:**
+        `/approve @username`: bu, sohbetteki bir kullanıcıyı onaylar.
     greetings:
-      main: "Greetings"
+      main: "greetings"
       help: |-
-        Customize your group's welcome / goodbye messages that can be personalised in multiple ways.
+        Grubunuzun karşılama / hoşçakal mesajlarını çeşitli şekillerde kişiselleştirilebilen özelleştirin.
 
         Note:
-        a) Currently it supports only text!
-        b) Alita must be an admin to greet and goodbye users.
+        a) Şu anda yalnızca metni destekliyor!
+        b) MytGuard, kullanıcıları selamlamak ve veda etmek için bir yönetici olmalıdır.
 
         Admin Commands:
-        × /setwelcome <reply> : Sets a custom welcome message.
-        × /setgoodbye <reply> : Sets a custom goodbye message.
-        × /resetwelcome : Resets to bot default welcome message.
-        × /resetgoodbye : Resets to bot default goodbye message.
-        × /welcome <on/off> | noformat : enable/disable | Shows the current welcome message | settings.
-        × /goodbye <on/off> | noformat : enable/disable | Shows the current goodbye message | settings.
-        × /cleanwelcome <on/off> : Shows or sets the current clean welcome settings.
-        × /cleangoodbye <on/off> : Shows or sets the current clean goodbye settings.
+        × /setwelcome <reply> : Özel bir karşılama mesajı ayarlar.
+        × /setgoodbye <reply> : Özel bir veda mesajı ayarlar.
+        × /resetwelcome : Bot varsayılan karşılama mesajına sıfırlanır.
+        × /resetgoodbye : Bot varsayılan hoşçakal mesajına sıfırlanır.
+        × /welcome <on/off> | noformat : enable/disable | Mevcut karşılama mesajını gösterir | ayarlar.
+        × /goodbye <on/off> | noformat : enable/disable | Geçerli veda mesajını gösterir | ayarlar.
+        × /cleanwelcome <on/off> : Geçerli temiz karşılama ayarlarını gösterir veya ayarlar.
+        × /cleangoodbye <on/off> : Geçerli temiz hoşçakal ayarlarını gösterir veya ayarlar.
 
         ── **Cleaner** ──:
-        × /cleanservice <on/off> : Use it to clean all service messages automatically or to view current status.
+        × /cleanservice <on/off> : Tüm servis mesajlarını otomatik olarak temizlemek veya mevcut durumu görüntülemek için kullanın.
 
         ── **Format** ──
-        Check /markdownhelp for help related to formatting!
-
+        Biçimlendirmeyle ilgili yardım için /markdownhelp'i kontrol edin!
     bans:
       main: "Bans"
       help: |-
-        Someone annoying entered your group?
-        Want to ban/restriction him/her?
-        This is the plugin for you, easily kick, ban and unban members in a group.
-        **Admin only:**
-        × /kick: Kick the user replied or tagged.
-        × /skick: Kick the user replied or tagged and delete your messsage.
-        × /dkick: Kick the user replied and delete their message.
-        × /ban: Bans the user replied to or tagged.
-        × /sban: Bans the user replied or tagged and delete your messsage.
-        × /dban: Bans the user replied and delete their message.
-        × /tban <userhandle> x(m/h/d): Bans a user for x time. (via handle, or reply). m = minutes, h = hours, d = days.
-        × /stban <userhandle> x(m/h/d): Silently bans a user for x time. (via handle, or reply). m = minutes, h = hours, d = days.
-        × /dtban <userhandle> x(m/h/d): Silently bans a user for x time and delete the replied message. (via reply). m = minutes, h = hours, d = days.
-        × /unban: Unbans the user replied to or tagged.
-        **Example:**
-        `/ban @username`: this bans a user in the chat.
+        Rahatsız edici biri grubunuza girdi?
+        Onu yasaklamak/kısıtlamak istiyorum?
+        Bu sizin için bir eklentidir, bir gruptaki üyeleri kolayca tekmeleyin, yasaklayın ve yasaklarını kaldırın.
+        **Yalnızca yönetici:**
+        × /kick: Yanıtlayan veya etiketlenen kullanıcıyı tekmeleyin.
+        × /skick: Yanıtlayan veya etiketlenen kullanıcıyı tekmeleyin ve mesajınızı silin.
+        × /dkick: Kullanıcıyı yanıtla ve mesajını sil.
+        × /ban: Kullanıcının yanıtladığı veya etiketlediği yasaklar.
+        × /sban: Kullanıcının yanıtladığı veya etiketlediği mesajı yasaklar ve mesajınızı siler.
+        × /dban: Kullanıcının yanıtladığı mesajı yasaklar ve mesajını siler.
+        × /tban <userhandle> x(m/h/d): Bir kullanıcıyı x kez yasaklar. (tutamak veya yanıt yoluyla). m = dakika, h = saat, d = gün.
+        × /stban <userhandle> x(m/h/d): Bir kullanıcıyı x kez sessizce yasaklar. (tutamak veya yanıt yoluyla). m = dakika, h = saat, d = gün.
+        × /dtban <userhandle> x(m/h/d): Bir kullanıcıyı x kez sessizce yasaklar ve yanıtlanan mesajı siler. (cevap yoluyla). m = dakika, h = saat, d = gün.
+        × /unban: Kullanıcının yanıtladığı veya etiketlediği yasağı kaldırır.
+        **Örnek:**
+        `/ban @username`: bu, sohbette bir kullanıcıyı yasaklar.
     blacklist:
       main: "Blacklist"
       help: |-
-        Want to restrict certain words or sentences in your group?
-        Blacklists are used to stop certain triggers from being said in a group. Any time the trigger is mentioned, that message will immediately be deleted.
-        A good combo is sometimes to pair this up with warn filters!
-        **NOTE:** blacklists do not affect group admins.
-        × /blacklist: View the current blacklisted words.
-        **Admin only:**
-        × /addblacklist `<triggers>`: Add a trigger to the blacklist. Each line is considered one trigger, so using different lines will allow you to add multiple triggers.
-        × /unblacklist `<triggers>`: Remove triggers from the blacklist. Same newline logic applies here, so you can remove multiple triggers at once.
-        × /blaction `<action>`: This action will occur when user uses a blacklist word. Choose from - 'kick', 'ban', 'mute', 'warn'.
-        Default is 'none', which will delete the users message on typing a blacklist word.
+        Grubunuzdaki belirli kelimeleri veya cümleleri kısıtlamak istiyorsanız?
+        Kara listeler, belirli tetikleyicilerin bir grupta söylenmesini engellemek için kullanılır. Tetikleyiciden her bahsedildiğinde, o mesaj hemen silinecektir..
+        Bazen bunu uyarı filtreleriyle eşleştirmek iyi bir kombinasyondur.!
+        **NOTE:** kara listeler grup yöneticilerini etkilemez.
+        × /blacklist: Mevcut kara listeye alınmış kelimeleri görüntüleyin.
+        **Yalnızca yönetici:**
+        × /addblacklist `<triggers>`: Kara listeye bir tetikleyici ekleyin. Her satır bir tetikleyici olarak kabul edilir, bu nedenle farklı satırlar kullanmak birden çok tetikleyici eklemenize olanak tanır.
+        × /unblacklist `<triggers>`: Tetikleyicileri kara listeden kaldırın. Aynı satırsonu mantığı burada da geçerlidir, böylece aynı anda birden fazla tetikleyiciyi kaldırabilirsiniz.
+        × /blaction `<action>`: Bu eylem, kullanıcı bir kara liste sözcüğü kullandığında gerçekleşir. 'kick', 'ban', 'mute', 'warn' arasından seçim yapın.
+        Varsayılan, bir kara liste sözcüğü yazıldığında kullanıcıların mesajını silecek olan 'yok'tur..
         **Owner Only**
-        × /rmallblacklist: Removes all the blacklists from the current chat.
-        **Note:** Can only add or remove one blacklist at a time!
-        **Example:**
-        `/addblacklist hello`: this adds the word 'hello' as blacklist in the chat.
+        × /rmallblacklist: Mevcut sohbetteki tüm kara listeleri kaldırır.
+        **Note:** Bir seferde yalnızca bir kara liste ekleyebilir veya kaldırabilir!
+        **Örnek:**
+        `/addblacklist merhaba`: bu, sohbette kara liste olarak 'merhaba' kelimesini ekler.
     filters:
       main: "Filters"
       help: |-
-        • /filters: List all active filters saved in the chat.
+        • /filters: Sohbete kaydedilen tüm aktif filtreleri listeleyin.
 
-        **Admin only:**
-        • /filter "`<keyword>`" `<reply message>`: Add a filter to this chat. The bot will now reply that message whenever 'keyword'
-        is mentioned. If you reply to a sticker with a keyword, the bot will reply with that sticker.
+        **Yalnızca yönetici:**
+        • /filter "`<keyword>`" `<reply message>`: Bu sohbete bir filtre ekleyin. Bot artık 'anahtar kelime' olduğunda bu mesajı yanıtlayacak
+        bahsediliyor. Bir çıkartmaya bir anahtar kelime ile cevap verirseniz, bot o çıkartma ile cevap verecektir..
 
-        If you want your keyword to be a sentence, use quotes. eg: /filter "hey there" How are you doin?
-        **Example:**
-        `/filter "filtername" Reply Text`
+        Anahtar kelimenizin bir cümle olmasını istiyorsanız, tırnak işaretleri kullanın. örneğin: /filter "merhaba" Nasılsın?
+        **Örnek:**
+        `/filter "filtre adı" Cevap Metni`
 
-        Aliases for filters can be too set, just put '|' between the filternames you want.
-        **Example:**
-        `/filter "filtername1|filtername2" Reply Text`
-        Using the you can make a single filter work on 2 filternames without manually adding another one.
+        Filtreler için takma adlar fazla ayarlanabilir, sadece '|' koyun istediğiniz filtre isimleri arasında.
+        **Örnek:**
+        `/filter "filtre adı1|filtre adı2" Yanıt Metni`
+        Kullanarak, tek bir filtreyi manuel olarak başka bir filtre eklemeden 2 filtre adı üzerinde çalıştırabilirsiniz..
 
-        • /stop `<filter keyword>`: Stop that filter.
-        **Note:** For filters with aliases, if you stop one alias, the filter will stop working on other aliases too.
-        **For Example:** If you stop the "filtername1" from above example, the bot will not respond to "filtername2".
+        • /stop `<filter keyword>`: Bu filtreyi durdur.
+        **Note:** Takma adı olan filtreler için, bir takma adı durdurursanız, filtre diğer takma adlarda da çalışmayı durdurur.
+        **Örnek:** Yukarıdaki örnekteki "filtre adı1"i durdurursanız, bot "filtre adı2"ye yanıt vermez.
 
-        **Chat creator only:**
-        • /removeallfilters: Remove all chat filters at once.
+        **Yalnızca sohbet sahibi:**
+        • /removeallfilters: Tüm sohbet filtrelerini bir kerede kaldırın.
 
         **Note:**
-        Currently there is a limit of 50 filters and 120 aliases per chat.
-        All filter keywords are in lowercase.
+        Şu anda sohbet başına 50 filtre ve 120 takma ad sınırı vardır.
+        Tüm filtre anahtar kelimeleri küçük harflidir.
     formatting:
       main: "Formatting"
       help: |-
         Formatting
 
-        Alita supports a large number of formatting options to make your messages more expressive. Take a look by clicking the buttons below!
+        MytGuard, mesajlarınızı daha anlamlı hale getirmek için çok sayıda biçimlendirme seçeneğini destekler. Aşağıdaki butonlara tıklayarak bir göz atın!
     fun:
       main: "Fun"
       help: |-
-        × /runs: reply a random string from an array of replies.
-        × /slap: slap a user, or get slapped if not a reply.
-        × /shrug : get shrug XD.
-        × /decide : Randomly answers yes/no/maybe
-        × /toss : Tosses A coin
-        × /bluetext : check urself :V
-        × /roll : Roll a dice.
-        × /react : Random Reaction
-        × /shout `<keyword>`: write anything you want to give loud shout.
+        × /runs: bir dizi yanıttan rastgele bir dizeyi yanıtla.
+        × /slap: bir kullanıcıyı tokatla veya bir cevap değilse tokatla.
+        × /shrug : omuz silkmek XD.
+        × /decide : Rastgele cevaplar yes/no/maybe
+        × /toss : Bir madeni para fırlatır
+        × /bluetext : kendini kontrol et :V
+        × /roll : Bir zar at.
+        × /react : Rastgele Reaksiyon
+        × /shout `<keyword>`: yüksek sesle bağırmak istediğin her şeyi yaz.
     language:
       main: "Language"
       help: |-
-        Not able to change language of the bot?
-        Easily change by using this module!
+        Botun dilini değiştiremiyorum?
+        Bu modülü kullanarak kolayca değiştirin!
 
-        Just type /lang and use inline keyboard to choose a language for yourself or your group.
+        Kendiniz veya grubunuz için bir dil seçmek için /lang yazın ve satır içi klavyeyi kullanın.
 
-        You can help us bring bot to more languages by helping on [Crowdin](https://crowdin.com/project/alita_robot)
+        [MytGuardBot](https://t.me/mytproguardbot)'u daha fazla dile getirmemize yardımcı olabilirsiniz.
     locks:
       main: "Locks"
       help: |-
-        Use this to lock group permissions.
-        Allows you to lock and unlock permission types in the chat.
+        Grup izinlerini kilitlemek için bunu kullanın.
+        Sohbette izin türlerini kilitlemenizi ve kilidini açmanızı sağlar.
 
-        **Usage:**
-        × /lock `<type>`: Lock Chat permission.
-        × /unlock `<type>`: Unlock Chat permission.
-        × /locks: View Chat permission.
-        × /locktypes: Check available lock types!
+        **kullanım:**
+        × /lock `<type>`: Sohbet iznini kilitle.
+        × /unlock `<type>`: Sohbet izninin kilidini aç.
+        × /locks: Sohbet iznini görüntüle.
+        × /locktypes: Mevcut kilit tiplerini kontrol edin!
 
-        **Example:**
-        `/lock media`: this locks all the media messages in the chat.
+        **Örnek:**
+        `/lock media`: bu, sohbetteki tüm medya mesajlarını kilitler.
     muting:
       main: "Muting"
       help: |-
-        Want someone to keep quite for a while in the group?
-        Mute plugin is here to help, mute or unmute any user easily!
+        Birinin bir süre grupta kalmasını istiyorum?
+        Mute eklentisi, herhangi bir kullanıcıya kolayca yardımcı olmak, sessize almak veya sesini açmak için burada!
 
-        **Admin only:**
-        × /mute: Mute the user replied to or mentioned.
-        × /smute: silences a user without notifying. Can also be used as a reply, muting the replied to user.
-        × /dmute: Mute a user by reply, and delete their message.
-        × /tmute <userhandle> x(m/h/d): mutes a user for x time. (via handle, or reply). m = minutes, h = hours, d = days.
-        × /stmute <userhandle> x(m/h/d): mutes a user for x time without notifying. (via handle, or reply). m = minutes, h = hours, d = days.
-        × /dtmute <userhandle> x(m/h/d): Mute the replied user, and delete the replied message. (via reply). m = minutes, h = hours, d = days.
-        × /unmute: Unmutes the user mentioned or replied to.
+        **Yalnızca yönetici:**
+        × /mute: Yanıtlanan veya bahsedilen kullanıcının sesini kapatın.
+        × /smute: kullanıcıyı bilgilendirmeden susturur. Ayrıca, yanıtlanan kullanıcıyı sessize alarak yanıt olarak da kullanılabilir.
+        × /dmute: Bir kullanıcıyı yanıtlayarak sessize alın ve mesajını silin.
+        × /tmute <userhandle> x(m/h/d): bir kullanıcıyı x kez sessize alır. (tutamak veya yanıt yoluyla). m = dakika, h = saat, d = gün.
+        × /stmute <userhandle> x(m/h/d): bir kullanıcıyı bildirimde bulunmadan x kez sessize alır. (tutamak veya yanıt yoluyla). m = dakika, h = saat, d = gün.
+        × /dtmute <userhandle> x(m/h/d): Yanıtlanan kullanıcının sesini kapatın ve yanıtlanan mesajı silin. (cevap yoluyla). m = dakika, h = saat, d = gün.
+        × /unmute: Bahsedilen veya yanıtlanan kullanıcının sesini açar.
 
-        **Example:**
-        `/mute @username`; this mutes a user.
+        **Örnek:**
+        `/mute @username`; kullanıcı sessize alındı.
     notes:
       main: "Notes"
       help: |-
-        Save a note, get that, even you can delete that note.
-        This note only avaiable for your whole group!
-        Only admins can save and deletenotes, anyone can get them.
+        Bir not kaydet, onu al, o notu sen bile silebilirsin.
+        Bu not yalnızca tüm grubunuz için geçerlidir!
+        Notları yalnızca yöneticiler kaydedebilir ve silebilir, herkes alabilir.
 
-        × /save `<notename>` <`note content or reply to message>`
-        Save a note, you can get or delete that later.
+        × /save `<notename>` <`içeriği not edin veya mesaja yanıt verin>`
+        Bir not kaydedin, daha sonra alabilir veya silebilirsiniz.
 
-        × /get `<note>` or #<note>
-        Get that note, if avaiable.
+        × /get `<note>` veya #<note>
+        Varsa bu notu alın.
 
-        × /get `<note>` noformat or /get `<note>` raw
-        Get that note in raw format, so you can edit and update it.
+        × /get `<note>` noformat veya /get `<note>` raw
+        Bu notu ham biçimde alın, böylece düzenleyebilir ve güncelleyebilirsiniz.
 
         × /clear `<note>`
-        Delete that note, if avaiable.
+        Varsa bu notu silin.
 
         × /clearall
-        Clears all notes in the chat!
-        **NOTE:** Can only be used by owner of chat!
+        Sohbetteki tüm notları temizler!
+        **NOTE:** Sadece sohbet sahibi tarafından kullanılabilir!
 
-        × /saved or /notes
-        Get all your notes, if too much notes, please use this in your saved message instead!
+        × /saved veya /notes
+        Tüm notlarınızı alın, çok fazla not varsa, lütfen bunu kayıtlı mesajınızda kullanın.!
 
-        × /privatenotes `<on/yes/no/off>`: Whether to turn private rules on or off, prevents spam in chat when people use notes command.
+        × /privatenotes `<on/yes/no/off>`: Özel kuralların açılıp kapatılmayacağı, kişiler notlar komutunu kullandığında sohbette istenmeyen postaları önler.
 
         ── **Note Format** ──
-        Check /markdownhelp for help related to formatting!
+        Biçimlendirmeyle ilgili yardım için /markdownhelp'i kontrol edin!
     pins:
       main: "Pins"
       help: |-
-        Here you find find all help related to groups pins and how to manage them via me.
+        Burada grup pinleriyle ilgili tüm yardımları ve bunları benim aracılığımla nasıl yöneteceğinizi bulabilirsiniz..
 
-        **Admin Cmds:**
-        × /pin: Silently pins the message replied to - add `loud`, `notify` or `alert` to give notificaton to users.
-        × /unpin: Unpins the last pinned message.
-        × /pinned: Gives the current pinned message of the chat.
-        × /unpinall: Unpins all the pinned message in the current chat.
-        × /antichannelpin `<on/off/yes/no>`: Toggle antichannelpin status. All the messages from linked channel will be unpinned if enabled!
-        × /cleanlinked `<on/off/yes/no>`: Toggle cleanlinked status. All the messages from linked channel will be deleted if enabled!
-        × /permapin `<text>`: Pin a custom messages via bot. This message can contain markdown, and can be used in replies to the media include additional buttons and text.
+        **Yönetici Komutanları:**
+        × /pin: Yanıtlanan mesajı sessizce sabitler - kullanıcılara bildirim vermek için "yüksek sesle", "bildir" veya "uyarı" ekleyin.
+        × /unpin: Son sabitlenmiş mesajın sabitlemesini kaldırır.
+        × /pinned: Sohbetin mevcut sabitlenmiş mesajını verir.
+        × /unpinall: Geçerli sohbetteki tüm sabitlenmiş mesajların sabitlemesini kaldırır.
+        × /antichannelpin `<on/off/yes/no>`: Antichannelpin durumunu değiştir. Etkinleştirilirse bağlantılı kanaldan gelen tüm mesajların sabitlemesi kaldırılacaktır!
+        × /cleanlinked `<on/off/yes/no>`: Temiz bağlantı durumunu değiştir. Etkinleştirilirse bağlantılı kanaldaki tüm mesajlar silinecek!
+        × /permapin `<text>`: Bot aracılığıyla özel bir mesajı sabitleyin. Bu mesaj işaretleme içerebilir ve ek düğmeler ve metin içeren medyaya verilen yanıtlarda kullanılabilir..
     purges:
       main: "Purges"
       help: |-
-        Want to delete messages in you group?
-        × /purge: Deletes messages upto replied message.
-        × /spurge: Deletes messages upto replied message without a success message.
-        × /del: Deletes a single message, used as a reply to message.
+        Grubunuzdaki mesajları silmek istiyorum?
+        × /purge: Cevaplanan mesaja kadar silinen mesajlar.
+        × /spurge: Başarı mesajı olmadan cevaplanan mesaja kadar silinen mesajlar.
+        × /del: Mesaja cevap olarak kullanılan tek bir mesajı siler.
 
         **Example:**
-        `/purge <as a reply to message>`: this will delete all the messages till the one you replied.
+        `/purge <mesajı yanıt olarak>`: bu, yanıtladığınız tüm mesajları siler.
     reporting:
       main: "Reporting"
       help: |-
-        × /report `<reason>`: reply to a message to report it to admins.
-        - @admin: reply to a message to report it to admins.
-        **NOTE:** Neither of these will get triggered if used by admins.
+        × /report `<sebep>`: yöneticilere bildirmek için bir mesajı yanıtlayın.
+        - @admin: yöneticilere bildirmek için bir mesajı yanıtlayın.
+        **NOTE:** Yöneticiler tarafından kullanılırsa bunların hiçbiri tetiklenmez.
 
-        **Admins Only:**
-        × /reports `<on/off/yes/no>`: change report setting, or view current status.
-          - If done in PM, toggles your status.
-          - If in group, toggles that groups's status.
+        **Yalnızca Yöneticiler:**
+        × /reports `<on/off/yes/no>`: rapor ayarını değiştirin veya mevcut durumu görüntüleyin.
+        - PM'de yapılırsa durumunuzu değiştirir.
+        - Gruptaysa, o grupların durumunu değiştirir.
     rules:
       main: "Rules"
       help: |-
-        Set rules for you chat so that members know what to do and what not to do in your group!
+        Üyelerin grubunuzda ne yapmaları ve ne yapmamaları gerektiğini bilmeleri için sohbetiniz için kurallar belirleyin!
 
-        × /rules: get the rules for current chat.
+        × /rules: mevcut sohbet için kuralları al.
 
-        **Admin only:**
-        × /setrules `<rules>`: Set the rules for this chat, also works as a reply to a message.
-        × /clearrules: Clear the rules for this chat.
-        × /privrules `<on/yes/no/off>`: Turns on/off the option to send the rules to PM of user or group.
+        **Yalnızca yönetici:**
+        × /setrules `<rules>`: Bu sohbetin kurallarını belirleyin, aynı zamanda bir mesaja cevap olarak da çalışır.
+        × /clearrules: Bu sohbet için kuralları temizle.
+        × /privrules `<on/yes/no/off>`: Kuralları kullanıcının veya grubun PM'sine gönderme seçeneğini açar/kapatır.
     utils:
       main: "Utils"
       help: |-
-        Some utils provided by bot to make your tasks easy!
+        Görevlerinizi kolaylaştırmak için bot tarafından sağlanan bazı araçlar!
 
-        × /id: Get the current group id. If used by replying to a message, get that user's id.
-        × /info: Get information about a user.
-        × /gifid: Reply to a gif to me to tell you its file ID.
-        × /wiki: `<query>`: wiki your query.
-        × /tr `<language>`: Translates the text and then replies to you with the language you have specifed, works as a reply to message.
-        × /github `<username>`: Search for the user using github api!
-        × /lyrics `<song>`: Get the lyrics of the song you specify!
-        × /weebify `<text>` or `<reply to message>`: To weebify the text.
+        × /id: Geçerli grup kimliğini alın. Bir mesajı yanıtlayarak kullanılıyorsa, o kullanıcının kimliğini alın.
+        × /info: Bir kullanıcı hakkında bilgi alın.
+        × /gifid: Dosya kimliğini size söylemem için bana bir gife yanıt verin.
+        × /wiki: `<query>`: sorgunuzu wiki'ye ekleyin.
+        × /tr `<language>`: Metni çevirir ve ardından belirttiğiniz dilde size cevap verir, mesaja cevap olarak çalışır.
+        × /github `<username>`: kullanıcı hakkında github bilgisini al!
+        × /lyrics `<song>`: Belirttiğiniz şarkının sözlerini alın!
+        × /weebify `<text>` veya `<mesajı yanıtla>`: Metni ağartmak için.
 
-        **Example:**
-        `/info @username`: this fetches the information about a user from the database.
+        **Örnek:**
+        `/info @username`: bu, bir kullanıcı hakkındaki bilgileri veritabanından getirir.
     warnings:
       main: "Warnings"
       help: |-
-        Keep your members in check with warnings; stop them getting out of control!
+        Uyarılarla üyelerinizi kontrol altında tutun; kontrolden çıkmalarını engelle!
 
-        If you're looking for automated warnings, go read about the blacklist module.
+        Otomatik uyarılar arıyorsanız, kara liste modülünü okuyun.
 
         Admin commands:
-        - /warn `<reason>`: Warn a user.
-        - /dwarn `<reason>`: Warn a user by reply, and delete their message.
-        - /swarn `<reason>`: Silently warn a user, and delete your message.
-        - /warns: See a user's warnings.
-        - /rmwarn: Remove a user's latest warning.
-        - /resetwarn: Reset all of a user's warnings to 0.
-        - /warnings: Get the chat's warning settings.
-        - /warnmode `<ban/kick/mute>`: Set the chat's warn mode.
-        - /warnlimit `<number>`: Set the number of warnings before users are punished.
+        - /warn `<reason>`: Bir kullanıcıyı uyar.
+        - /dwarn `<reason>`: Bir kullanıcıyı yanıtlayarak uyarın ve mesajını silin.
+        - /swarn `<reason>`: Bir kullanıcıyı sessizce uyarın ve mesajınızı silin.
+        - /warns: Bir kullanıcının uyarılarını görün.
+        - /rmwarn: Bir kullanıcının en son uyarısını kaldırın.
+        - /resetwarn: Bir kullanıcının tüm uyarılarını 0'a sıfırlayın.
+        - /warnings: Sohbetin uyarı ayarlarını alın.
+        - /warnmode `<ban/kick/mute>`: Sohbetin uyarı modunu ayarla.
+        - /warnlimit `<number>`: Kullanıcılar cezalandırılmadan önce uyarı sayısını ayarlayın
 
         Examples:
-        `/warn @user`: this warns a user in the chat.
+        `/warn @user`: bu, sohbetteki bir kullanıcıyı uyarır.
   admin:
     adminlist:
-      adminstr: "Admins in <b>{chat_title}</b>:"
-      note_cached: "<i>Note:</i> These are cached values!"
-      note_updated: "<i>Note:</i> These are up-to-date values!"
-      reloaded_admins: "Reloaded all admins in this chat!"
-      use_admin_cache: "Use /admincache to reload admins!"
+      adminstr: "<b>{chat_title}</b> içindeki yöneticiler:"
+      note_cached: "<i>Not:</i> Bunlar önbelleğe alınmış değerlerdir!"
+      note_updated: "<i>Not:</i> Bunlar güncel değerlerdir!"
+      reloaded_admins: "Bu sohbetteki tüm yöneticiler yeniden yüklendi!"
+      use_admin_cache: "Yöneticileri yeniden yüklemek için /admincache kullanın!"
     ban:
-      user_already_banned: "This user is already banned, no use banning them again!"
-      no_target: "I can't ban nothing!"
-      admin_cannot_ban: "This user is an admin, I cannot ban them!"
-      ban_all: "Are you sure you want to ban all members in this group?"
-      banned_user: "{admin} banned {banned} in <b>{chat_title}</b>!"
-      banning_all: "Banning All Members..."
-      bot_no_right: "I don't have enough rights to ban this user."
+      user_already_banned: "Bu kullanıcı zaten yasaklanmış, bir daha yasaklamanın anlamı yok!"
+      no_target: "hiçbir şeyi yasaklayamam!"
+      admin_cannot_ban: "Bu kullanıcı bir yönetici, onları yasaklayamam!"
+      ban_all: "Bu gruptaki tüm üyeleri yasaklamak istediğinizden emin misiniz??"
+      banned_user: "{admin}, <b>{chat_title}</b>'de {banned} yasakladı!"
+      banning_all: "Tüm Üyelerin Yasaklanması..."
+      bot_no_right: "Bu kullanıcıyı yasaklamak için yeterli hakkım yok."
     demote:
-      no_target: "I can't demote nothing!"
-      bot_no_right: "I don't have enough rights to demote this user."
-      demoted_user: "{demoter} demoted {demoted} in <b>{chat_title}</b>!"
+      no_target: "hiçbir şeyi indiremem!"
+      bot_no_right: "Bu kullanıcının sıralamasını düşürmek için yeterli hakkım yok."
+      demoted_user: "{demoter}, <b>{chat_title}</b>'de {demote} rütbesini düşürdü!"
     invitelink: |-
-      Invite Link for Chat <b>{chat_name}</b>:
+      <b>{chat_name}</b> için Davet Bağlantısı:
       {link}
     kick:
-      user_already_banned: "This user is already banned, no use kicking them!"
-      no_target: "I can't kick nothing!"
-      admin_cannot_kick: "This user is an admin, I cannot kick them!"
-      bot_no_right: "I don't have enough rights to kick this user."
-      kicked_user: "{admin} kicked {kicked} in <b>{chat_title}</b>!"
+      user_already_banned: "Bu kullanıcı zaten yasaklanmış, onları tekmelemeye gerek yok!"
+      no_target: "hiçbir şeyi tekmeleyemem!"
+      admin_cannot_kick: "Bu kullanıcı bir admin, onları atamam!"
+      bot_no_right: "Bu kullanıcıyı atmak için yeterli hakkım yok."
+      kicked_user: "{admin}, <b>{chat_title}</b>'de {tekme attı}!"
     mute:
-      admin_cannot_mute: "This user is an admin, I cannot mute them!"
-      bot_no_right: "I don't have enough rights to mute this user."
-      muted_user: "Admin {admin} muted {muted}!"
-    no_invite_perm: "I don't have permission for invite link!"
-    no_restrict_perm: "You don't have permissions to restrict members!"
-    no_user_invite_perm: "You don't have permissions to invite users."
-    not_admin: "I'm not admin or I don't have rights."
+      admin_cannot_mute: "Bu kullanıcı bir yönetici, sesini kapatamıyorum!"
+      bot_no_right: "Bu kullanıcının sesini kapatmak için yeterli hakkım yok."
+      muted_user: "Yönetici {admin} sessize alındı ​​{muted}!"
+    no_invite_perm: "Davet bağlantısı için iznim yok!"
+    no_restrict_perm: "Üyeleri kısıtlama izniniz yok!"
+    no_user_invite_perm: "Kullanıcıları davet etme izniniz yok."
+    not_admin: "Yönetici değilim veya haklarım yok."
     promote:
-      no_target: "I can't promote nothing!"
-      bot_no_right: "I don't have enough rights to promote this user."
-      no_promote_perm: "You don't have permission to promote members!"
-      promoted_user: "{promoter} promoted {promoted} in chat <b>{chat_title}</b>!"
-    support_cannot_restrict: "This user is in my support staff, cannot restrict them."
+      no_target: "hiçbir şeyin tanıtımını yapamam!"
+      bot_no_right: "Bu kullanıcıyı tanıtmak için yeterli hakkım yok."
+      no_promote_perm: "Üyeleri tanıtma izniniz yok!"
+      promoted_user: "{promoter}, <b>{chat_title}</b> sohbetinde {promoteed} terfi etti!"
+    support_cannot_restrict: "Bu kullanıcı benim destek ekibimde, onları kısıtlayamaz."
     unban:
-      user_not_banned: "How can I unban a user who is not banned?"
-      no_target: "I can't unban nothing!"
-      bot_no_right: "I don't have enough rights to unban this user."
-      unbanned_user: "{admin} unbanned {unbanned} in chat <b>{chat_title}</b>!"
+      user_not_banned: "Banlanmayan bir kullanıcının yasağını nasıl kaldırabilirim??"
+      no_target: "hiçbir şeyin yasağını kaldıramıyorum!"
+      bot_no_right: "Bu kullanıcının yasağını kaldırmak için yeterli hakkım yok."
+      unbanned_user: "sohbette {admin} yasağı kaldırıldı {unbanned} <b>{chat_title}</b>!"
     unmute:
-      bot_no_right: "I don't have enough rights to unmute this user."
-      unmuted_user: "Admin {admin} unmuted {unmuted}!"
-    user_admin_invalid: "Cannot act on this user, maybe I wasn't the one who changed their permissions."
+      bot_no_right: "Bu kullanıcının sesini açmak için yeterli hakkım yok."
+      unmuted_user: "Yönetici {admin} sesi açıldı {unmuted}!"
+    user_admin_invalid: "Bu kullanıcı üzerinde işlem yapamıyorum, belki izinlerini değiştiren ben değildim."
   formatting:
     md_help: |-
       <b>Markdown Formatting</b>
-      You can format your message using <b>bold</b>, <i>italic</i>, <u>underline</u>, <strike>strike</strike> and much more. Go ahead and experiment!
 
-      **Note**: It supports telegram user based formatting as well as html and markdown formattings.
+      İletinizi <b>kalın</b>, <i>italik</i>, <u>altı çizili</u>, <strike>strike</strike> ve çok daha fazlasını kullanarak biçimlendirebilirsiniz. Devam et ve deney yap!
+
+      Not: HTML ve Markdown'ı (Her ikisi) de destekler !
+
       <b>Supported markdown</b>:
-      - <code>`code words`</code>: Backticks are used for monospace fonts. Shows as: <code>code words</code>.
-      - <code>__italic__</code>: Underscores are used for italic fonts. Shows as: <i>italic words</i>.
+      - <code>`code words`</code>: Tek aralıklı yazı tipleri için backtickler kullanılır. Şu şekilde gösterilir: <code>kod sözcükleri</code>.
+      - <code>__italic__</code>: İtalik yazı tipleri için alt çizgi kullanılır. Şu şekilde gösterilir: <i>italik kelimeler</i>.
       - <code>**bold**</code>: Asterisks are used for bold fonts. Shows as: <b>bold words</b>.
       - <code>```pre```</code>: To make the formatter ignore other formatting characters inside the text formatted with '```', like: <code>**bold** | *bold*</code>.
       - <code>--underline--</code>: To make text <u>underline</u>.
@@ -377,10 +378,8 @@ strings:
       This will show button 1 and 2 on the same line, while 3 will be underneath.
     filling_help: |-
       <b>Fillings</b>
-
       You can also customise the contents of your message with contextual data. For example, you could mention a user by name in the welcome message, or mention them in a filter!
       You can use these to mention a user in notes too!
-
       <b>Supported fillings:</b>
       - <code>{first}</code>: The user's first name.
       - <code>{last}</code>: The user's last name.
@@ -391,9 +390,7 @@ strings:
       - <code>{chatname}</code>: The chat's name.
     random_help: |-
       <b>Random Content</b>
-
       Another thing that can be fun, is to randomise the contents of a message. Make things a little more personal by changing welcome messages, or changing notes!
-
       How to use random contents:
       - %%%: This separator can be used to add "random" replies to the bot.
       For example:
@@ -402,7 +399,6 @@ strings:
       how are you</code>
       This will randomly choose between sending the first message, "hello", or the second message, "how are you".
       Use this to make Alita feel a bit more customised! (only works in filters/notes)
-
       Example welcome message::
       - Every time a new user joins, they'll be presented with one of the three messages shown here.
       -> /filter "hey"
@@ -438,7 +434,6 @@ strings:
       user_added_to_watch: |-
         You have been added to my global ban list!
         <b>Reason:</b> <code>{gban_reason}</code>
-
         <b>Appeal Chat:</b> @{SUPPORT_GROUP}
     here_gbanned_start: "Here are all the globally banned geys!\n\n"
     none_gbanned: "There aren't any gbanned users...!"
@@ -459,7 +454,6 @@ strings:
       user_removed_from_list: "You have been removed from my global ban list!"
     watcher_banned: |-
       This user ({user_gbanned}) has been banned globally!
-
       To get unbanned, appeal at @{SUPPORT_GROUP}
   blacklist:
     bl_watcher:
@@ -470,7 +464,6 @@ strings:
     action_get: |-
       The current action for blacklists in this chat is <i><b>{action}</b></i>
       All blacklist modes delete the message containing blacklist word.
-
       If you want to change this, you need to specify a new action instead of it.
       Possible actions are: <code>none</code>/<code>warn</code>/<code>mute</code>/<code>ban</code>
     action_set: "Set action for blacklist for this to <b>{action}</b>"
@@ -488,16 +481,13 @@ strings:
       exporting: "Exporting Charlist..."
       header: |
         List of chats in my database.
-
         <b>Chat name | Chat ID | Members count</b>
     execute_cmd_err: "Please execute the code correctly!"
     restarting: Restarting...
     speedtest:
       speedtest_txt: |-
         Speedtest
-
         <b>Host:</b> <code>{host}</code>
-
         <b>Ping:</b> <code>{ping}</code> ms
         <b>Download:</b> <code>{download}</code> Mbps
         <b>Upload:</b> <code>{upload}</code> Mbps
@@ -508,9 +498,7 @@ strings:
       Hey Thanks for your thought of donating me!
       When you donate, all the fund goes towards my development which makes on fast and responsive.
       Your donation might also me get me a new feature or two, which I wasn't able to get due to server limitations.
-
       All the fund would be put into my services such as database, storage and hosting!
-
       You can donate by contacting my owner here: @DivideProjectsBot
     back_btn: Back
     check_help: "Please check help on how to use this this command."
@@ -522,21 +510,18 @@ strings:
        × /start: Start the bot
        × /help: Give's you this message.
        × /donate: Information related on how to support my creator!
-
-      All commands can either be used with / or !.
+       All commands can either be used with / or !.
     no_admin_cmd_perm: "You cannot use an admin command!"
     no_perm_admin: "I don't have permission to do that"
     no_results: "No results found."
     some_error: |-
       Some error occured, report to @{SUPPORT_GROUP}
-
       <b>Error:</b> <code>{ef}</code>
     something_wrong: "Something went wrong!"
   langs:
     changed: "Language changed to <code>{lang_code}</code>"
     changelang: |-
       Here you can change language for the bot.
-
       You can help us bring bot to more languages by helping on [Crowdin](https://crowdin.com/project/alita_robot)
     correct_usage: |-
       <b>Correct Usage:</b>
@@ -545,7 +530,6 @@ strings:
     check_perm_msg: "Checking Chat permissions..."
     invalid_lock: |-
       Invalid Lock Type!
-
       Use /locktypes to get the lock types
     lock_all: "Locked <b>all</b> permission from this Chat!"
     locked_perm: "Locked <b>{perm}</b> for this Chat."
@@ -555,7 +539,6 @@ strings:
     unlocks_perm.sp_perm: "Specify a permission to unlock!"
     view_perm: |-
       <b>Chat Permissions:</b>
-
       <b>Send Messages:</b> {vmsg}
       <b>Send Media:</b> {vmedia}
       <b>Send Stickers:</b> {vother}
@@ -606,9 +589,7 @@ strings:
     group: "I'm alive :3"
     info_page: |-
       • @Alita_Robot
-
       <b>Version:</b> <i>{version}</i>
-
       <b>Developers:</b> [Divkix](https://github.com/Divkix)
       <b>Owner:</b> [{Owner}](tg://user?id={ID})
     support_group: Support
@@ -618,7 +599,6 @@ strings:
       Hey there! My name is MytGuard ✨.
       I'm here to help you manage your groups!
       Hit /help to find out more about how to use me in my full potential!
-
       Join my [News](http://t.me/meyitzade47) to get information on all the latest updates.
     public_help: "Press the button below to get help for <i>{help_option}</i>"
     source_code: "Source Code"
@@ -636,59 +616,47 @@ strings:
       Peer ID invalid, I haven't seen this user anywhere earlier, maybe username would help to know them!
     paste:
       nekobin_btn: NekoBin
-      pasted_nekobin: "Pasted to NekoBin!"
-      pasting: Pasting...
+      pasted_nekobin: "NekoBin'e yapıştırıldı!"
+      pasting: yapıştırıyorum...
     ping:
-      pinging: Pinging...
+      pinging: Ping atıyor...
     song:
-      no_lyrics_found: "Couldn't find any lyrics for that song!"
-      no_song_given: "You haven't specified which song to look for!"
-      searching: "Finding lyrics for <code>{song_name}<code>..."
-      song_not_found: "Song not found!"
+      no_lyrics_found: "O şarkının sözlerini bulamadım!"
+      no_song_given: "Hangi şarkıyı arayacağınızı belirtmediniz!"
+      searching: "<code>{song_name}<code> için şarkı sözleri bul..."
+      song_not_found: "Şarkı bulunamadı!"
     translate:
-      translate_usage: "Usage: /tr <language> text for translation (Can be also used in reply to a message)."
-      translating: Translating...
+      translate_usage: "Kullanım: /tr <dil> çeviri için metin (Mesajı yanıtlamak için de kullanılabilir)."
+      translating: çeviriyor...
       translation: |-
         <b>Language:</b> <code>{from_lang}</code> <b>-></b> <code>{to_lang}</code>
         <b>Translation:</b> <code>{translation}</code>
     user_info:
-      id_not_found: "User not found, please check the ID again"
-      peer_id_error: "I haven't seen this user, mind forwarding one of their messages so I can recognize them?"
-      getting_info: "Getting user information..."
+      id_not_found: "Kullanıcı bulunamadı, lütfen kimliği tekrar kontrol edin"
+      peer_id_error: "Bu kullanıcıyı görmedim, tanıyabilmem için mesajlarından birini iletmeyi düşünüyorum?"
+      getting_info: "Kullanıcı bilgilerini al..."
       info_text:
         last_name: |-
-
           <b>Last Name:</b> {user_lname}
         main: |-
           <b>Characteristics:</b>
           <b>ID:</b> <code>{user_id}</code>
           <b>First Name:</b> {user_name}
         perma_link: |-
-
           <b>Permanent User Link:</b> {perma_link}
         username: |-
-
           <b>Username:</b> @{username}
       support_user:
         dev: |-
-
-
-          This member is one of my Developers ⚡️
+          Bu kişi benim Geliştiricim ⚡️
         owner: |-
-
-
-          This person is my Owner, I would never do anything against them!
-
+          Bu kişi benim Sahibim, onlara karşı asla bir şey yapmam.!
         sudo: |-
-
-
-          This user is one of my Sudos, he has powers which are approximately same to owner!
+          Bu kullanıcı benim Sudos'larımdan biri, sahipleriyle yaklaşık olarak aynı yetkilere sahip.!
         whitelist: |-
-
-
-          This person is 'Whitelist User', they cannot be banned!
+          Bu kişi 'Beyaz Liste Kullanıcısı', yasaklanamaz!
     weebify:
       weebified_string: |-
         <b>Weebified String:</b>
         <code>{string}</code>
-      weebify_what: "What am I supposed to Weebify?"
+      weebify_what: "Ne Weebify yapmam gerekiyor?"
