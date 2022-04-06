@@ -24,29 +24,29 @@ async def approve_user(c: Alita, m: Message):
 
     if not user_id:
         await m.reply_text(
-            "Kimden bahsettiğini bilmiyorum, bir kullanıcı belirtmen gerekecek!",
+            "I don't know who you're talking about, you're going to need to specify a user!",
         )
         return
     try:
         member = await m.chat.get_member(user_id)
     except UserNotParticipant:
-        await m.reply_text("Bu kullanıcı bu sohbette değil!")
+        await m.reply_text("This user is not in this chat!")
         return
 
     except RPCError as ef:
         await m.reply_text(
-            f"<b>Hata</b>: <code>{ef}</code>\nBunu @{SUPPORT_GROUP} adresine bildirin",
+            f"<b>Error</b>: <code>{ef}</code>\nReport it to @{SUPPORT_GROUP}",
         )
         return
     if member.status in ("administrator", "creator"):
         await m.reply_text(
-            "Kullanıcı zaten yönetici - kara listeler ve kilitler zaten onlar için geçerli değil.",
+            "User is already admin - blacklists and locks already don't apply to them.",
         )
         return
     already_approved = db.check_approve(user_id)
     if already_approved:
         await m.reply_text(
-            f"{(ait söz_html(user_first_name, user_id))}, {chat_title}'da zaten onaylandı",
+            f"{(await mention_html(user_first_name, user_id))} is already approved in {chat_title}",
         )
         return
     db.add_approve(user_id, user_first_name)
@@ -61,7 +61,7 @@ async def approve_user(c: Alita, m: Message):
     await m.reply_text(
         (
             f"{(await mention_html(user_first_name, user_id))} has been approved in {chat_title}!\n"
-            "Artık kara listeler, kilitler ve antisel tarafından yok sayılacaklar!"
+            "They will now be ignored by blacklists, locks and antiflood!"
         ),
     )
     return
@@ -81,7 +81,7 @@ async def disapprove_user(c: Alita, m: Message):
     already_approved = db.check_approve(user_id)
     if not user_id:
         await m.reply_text(
-            "Kimden bahsettiğini bilmiyorum, bir kullanıcı belirtmen gerekecek!",
+            "I don't know who you're talking about, you're going to need to specify a user!",
         )
         return
     try:
@@ -89,7 +89,7 @@ async def disapprove_user(c: Alita, m: Message):
     except UserNotParticipant:
         if already_approved:  # If user is approved and not in chat, unapprove them.
             db.remove_approve(user_id)
-            LOGGER.info(f"{user_id}, {m.chat.id} içinde UserNotParticipant olarak onaylanmadı")
+            LOGGER.info(f"{user_id} disapproved in {m.chat.id} as UserNotParticipant")
         await m.reply_text("This user is not in this chat, unapproved them.")
         return
     except RPCError as ef:
@@ -99,7 +99,7 @@ async def disapprove_user(c: Alita, m: Message):
         return
 
     if member.status in ("administrator", "creator"):
-        await m.reply_text("Bu kullanıcı bir yöneticidir, reddedilemez.")
+        await m.reply_text("This user is an admin, they can't be disapproved.")
         return
 
     if not already_approved:
@@ -109,7 +109,7 @@ async def disapprove_user(c: Alita, m: Message):
         return
 
     db.remove_approve(user_id)
-    LOGGER.info(f"{user_id}, {m.chat.id} içinde {m.from_user.id} tarafından onaylanmadı")
+    LOGGER.info(f"{user_id} disapproved by {m.from_user.id} in {m.chat.id}")
 
     # Set permission same as of current user by fetching them from chat!
     await m.chat.restrict_member(
@@ -118,7 +118,7 @@ async def disapprove_user(c: Alita, m: Message):
     )
 
     await m.reply_text(
-        f"{(aitbahis_html(user_first_name, user_id))} artık {chat_title}'da onaylanmıyor.",
+        f"{(await mention_html(user_first_name, user_id))} is no longer approved in {chat_title}.",
     )
     return
 
@@ -133,7 +133,7 @@ async def check_approved(_, m: Message):
     approved_people = db.list_approved()
 
     if not approved_people:
-        await m.reply_text(f"{chat_title}'da hiçbir kullanıcı onaylanmadı.")
+        await m.reply_text(f"No users are approved in {chat_title}.")
         return
 
     for user_id, user_name in approved_people.items():
@@ -146,7 +146,7 @@ async def check_approved(_, m: Message):
             pass
         msg += f"- `{user_id}`: {user_name}\n"
     await m.reply_text(msg)
-    LOGGER.info(f"{m.from_user.id}, {m.chat.id}'deki onaylı kullanıcıları kontrol ediyor")
+    LOGGER.info(f"{m.from_user.id} checking approved users in {m.chat.id}")
     return
 
 
@@ -159,20 +159,20 @@ async def check_approval(c: Alita, m: Message):
     except Exception:
         return
     check_approve = db.check_approve(user_id)
-    LOGGER.info(f"{m.from_user.id}, {m.chat.id}'de {user_id} kullanıcı onayını kontrol ediyor")
+    LOGGER.info(f"{m.from_user.id} checking approval of {user_id} in {m.chat.id}")
 
     if not user_id:
         await m.reply_text(
-            "Kimden bahsettiğini bilmiyorum, bir kullanıcı belirtmen gerekecek!",
+            "I don't know who you're talking about, you're going to need to specify a user!",
         )
         return
     if check_approve:
         await m.reply_text(
-            f"{(awaitbahis_html(user_first_name, user_id))} onaylanmış bir kullanıcıdır. Kilitler, sel önleme ve kara listeler bunlara uygulanmaz.",
+            f"{(await mention_html(user_first_name, user_id))} is an approved user. Locks, antiflood, and blacklists won't apply to them.",
         )
     else:
         await m.reply_text(
-            f"{(await mention_html(user_first_name, user_id))} onaylı bir kullanıcı değil. Normal komutlardan etkilenirler.",
+            f"{(await mention_html(user_first_name, user_id))} is not an approved user. They are affected by normal commands.",
         )
     return
 
@@ -185,13 +185,13 @@ async def unapproveall_users(_, m: Message):
 
     all_approved = db.list_approved()
     if not all_approved:
-        await m.reply_text("Bu sohbette kimse onaylanmadı.")
+        await m.reply_text("No one is approved in this chat.")
         return
 
     await m.reply_text(
-        "Bu sohbette onaylanan herkesi kaldırmak istediğinizden emin misiniz??",
+        "Are you sure you want to remove everyone who is approved in this chat?",
         reply_markup=ikb(
-            [[("⚠️ Onaylama", "unapprove_all"), ("❌ İptal", "close_admin")]],
+            [[("⚠️ Confirm", "unapprove_all"), ("❌ Cancel", "close_admin")]],
         ),
     )
     return
@@ -205,13 +205,13 @@ async def unapproveall_callback(_, q: CallbackQuery):
     user_status = (await q.message.chat.get_member(user_id)).status
     if user_status not in {"creator", "administrator"}:
         await q.answer(
-            "Yönetici bile değilsin, bu patlayıcı şeyi deneme!",
+            "You're not even an admin, don't try this explosive shit!",
             show_alert=True,
         )
         return
     if user_status != "creator":
         await q.answer(
-            "Sahip değil, bir yöneticisin\nSınırlarında kal!",
+            "You're just an admin, not owner\nStay in your limits!",
             show_alert=True,
         )
         return
@@ -222,8 +222,8 @@ async def unapproveall_callback(_, q: CallbackQuery):
             permissions=q.message.chat.permissions,
         )
     await q.message.delete()
-    LOGGER.info(f"{user_id}, {q.message.chat.id} içindeki tüm kullanıcıları onaylamadı")
-    await q.answer("Tüm kullanıcılar onaylanmadı!", show_alert=True)
+    LOGGER.info(f"{user_id} disapproved all users in {q.message.chat.id}")
+    await q.answer("Disapproved all users!", show_alert=True)
     return
 
 
