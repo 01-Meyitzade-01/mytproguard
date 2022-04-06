@@ -30,7 +30,7 @@ strings:
         **Örnek:**
         `/promote @username`: bu, bir kullanıcıyı yöneticiliğe yükseltir.
     approve:
-      main: "approve"
+      main: "onaylama"
       help: |-
         Bazen bir kullanıcıya istenmeyen içerik göndermeyeceğine güvenebilirsiniz..
         Belki onları yönetici yapmak için yeterli değil, ancak kilitler, kara listeler ve bunlara uygulanmaması konusunda sorun yaşamayabilirsiniz..
@@ -44,7 +44,7 @@ strings:
         **Örnek:**
         `/approve @username`: bu, sohbetteki bir kullanıcıyı onaylar.
     greetings:
-      main: "greetings"
+      main: "Hoşgeldin"
       help: |-
         Grubunuzun karşılama / hoşçakal mesajlarını çeşitli şekillerde kişiselleştirilebilen özelleştirin.
 
@@ -68,7 +68,7 @@ strings:
         ── **Format** ──
         Biçimlendirmeyle ilgili yardım için /markdownhelp'i kontrol edin!
     bans:
-      main: "Bans"
+      main: "Yasaklama"
       help: |-
         Rahatsız edici biri grubunuza girdi?
         Onu yasaklamak/kısıtlamak istiyorum?
@@ -87,7 +87,7 @@ strings:
         **Örnek:**
         `/ban @username`: bu, sohbette bir kullanıcıyı yasaklar.
     blacklist:
-      main: "Blacklist"
+      main: "Kara liste"
       help: |-
         Grubunuzdaki belirli kelimeleri veya cümleleri kısıtlamak istiyorsanız?
         Kara listeler, belirli tetikleyicilerin bir grupta söylenmesini engellemek için kullanılır. Tetikleyiciden her bahsedildiğinde, o mesaj hemen silinecektir..
@@ -105,7 +105,7 @@ strings:
         **Örnek:**
         `/addblacklist merhaba`: bu, sohbette kara liste olarak 'merhaba' kelimesini ekler.
     filters:
-      main: "Filters"
+      main: "Filtreler"
       help: |-
         • /filters: Sohbete kaydedilen tüm aktif filtreleri listeleyin.
 
@@ -133,13 +133,13 @@ strings:
         Şu anda sohbet başına 50 filtre ve 120 takma ad sınırı vardır.
         Tüm filtre anahtar kelimeleri küçük harflidir.
     formatting:
-      main: "Formatting"
+      main: "Biçimlendirme"
       help: |-
         Formatting
 
         MytGuard, mesajlarınızı daha anlamlı hale getirmek için çok sayıda biçimlendirme seçeneğini destekler. Aşağıdaki butonlara tıklayarak bir göz atın!
     fun:
-      main: "Fun"
+      main: "Eğlence"
       help: |-
         × /runs: bir dizi yanıttan rastgele bir dizeyi yanıtla.
         × /slap: bir kullanıcıyı tokatla veya bir cevap değilse tokatla.
@@ -151,7 +151,7 @@ strings:
         × /react : Rastgele Reaksiyon
         × /shout `<keyword>`: yüksek sesle bağırmak istediğin her şeyi yaz.
     language:
-      main: "Language"
+      main: "Diller"
       help: |-
         Botun dilini değiştiremiyorum?
         Bu modülü kullanarak kolayca değiştirin!
@@ -160,7 +160,7 @@ strings:
 
         [MytGuardBot](https://t.me/mytproguardbot)'u daha fazla dile getirmemize yardımcı olabilirsiniz.
     locks:
-      main: "Locks"
+      main: "Kilitler"
       help: |-
         Grup izinlerini kilitlemek için bunu kullanın.
         Sohbette izin türlerini kilitlemenizi ve kilidini açmanızı sağlar.
@@ -174,7 +174,7 @@ strings:
         **Örnek:**
         `/lock media`: bu, sohbetteki tüm medya mesajlarını kilitler.
     muting:
-      main: "Muting"
+      main: "Sessize alma"
       help: |-
         Birinin bir süre grupta kalmasını istiyorum?
         Mute eklentisi, herhangi bir kullanıcıya kolayca yardımcı olmak, sessize almak veya sesini açmak için burada!
@@ -191,7 +191,7 @@ strings:
         **Örnek:**
         `/mute @username`; kullanıcı sessize alındı.
     notes:
-      main: "Notes"
+      main: "Notlar"
       help: |-
         Bir not kaydet, onu al, o notu sen bile silebilirsin.
         Bu not yalnızca tüm grubunuz için geçerlidir!
@@ -221,7 +221,7 @@ strings:
         ── **Note Format** ──
         Biçimlendirmeyle ilgili yardım için /markdownhelp'i kontrol edin!
     pins:
-      main: "Pins"
+      main: "Sabitleme"
       help: |-
         Burada grup pinleriyle ilgili tüm yardımları ve bunları benim aracılığımla nasıl yöneteceğinizi bulabilirsiniz..
 
@@ -234,7 +234,7 @@ strings:
         × /cleanlinked `<on/off/yes/no>`: Temiz bağlantı durumunu değiştir. Etkinleştirilirse bağlantılı kanaldaki tüm mesajlar silinecek!
         × /permapin `<text>`: Bot aracılığıyla özel bir mesajı sabitleyin. Bu mesaj işaretleme içerebilir ve ek düğmeler ve metin içeren medyaya verilen yanıtlarda kullanılabilir..
     purges:
-      main: "Purges"
+      main: "Temizleme"
       help: |-
         Grubunuzdaki mesajları silmek istiyorum?
         × /purge: Cevaplanan mesaja kadar silinen mesajlar.
@@ -244,7 +244,7 @@ strings:
         **Example:**
         `/purge <mesajı yanıt olarak>`: bu, yanıtladığınız tüm mesajları siler.
     reporting:
-      main: "Reporting"
+      main: "Raporlama"
       help: |-
         × /report `<sebep>`: yöneticilere bildirmek için bir mesajı yanıtlayın.
         - @admin: yöneticilere bildirmek için bir mesajı yanıtlayın.
@@ -255,7 +255,7 @@ strings:
         - PM'de yapılırsa durumunuzu değiştirir.
         - Gruptaysa, o grupların durumunu değiştirir.
     rules:
-      main: "Rules"
+      main: "Kurallar"
       help: |-
         Üyelerin grubunuzda ne yapmaları ve ne yapmamaları gerektiğini bilmeleri için sohbetiniz için kurallar belirleyin!
 
@@ -266,7 +266,7 @@ strings:
         × /clearrules: Bu sohbet için kuralları temizle.
         × /privrules `<on/yes/no/off>`: Kuralları kullanıcının veya grubun PM'sine gönderme seçeneğini açar/kapatır.
     utils:
-      main: "Utils"
+      main: "araçlar"
       help: |-
         Görevlerinizi kolaylaştırmak için bot tarafından sağlanan bazı araçlar!
 
@@ -282,7 +282,7 @@ strings:
         **Örnek:**
         `/info @username`: bu, bir kullanıcı hakkındaki bilgileri veritabanından getirir.
     warnings:
-      main: "Warnings"
+      main: "uyarılar"
       help: |-
         Uyarılarla üyelerinizi kontrol altında tutun; kontrolden çıkmalarını engelle!
 
