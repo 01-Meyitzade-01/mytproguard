@@ -95,7 +95,7 @@ async def get_private_note(c: Alita, m: Message, help_option: str):
     msgtype = getnotes["msgtype"]
     if not msgtype:
         await m.reply_text(
-            "<b>Error:</b> Cannot find a type for this note!!",
+            "<b>Hata:</b> Bu not için bir tür bulunamadı!!",
             quote=True,
         )
         return
@@ -135,7 +135,7 @@ async def get_private_note(c: Alita, m: Message, help_option: str):
                 return
             except RPCError as ef:
                 await m.reply_text(
-                    "An error has occured! Cannot parse note.",
+                    "Bir hata oluştu! Not ayrıştırılamıyor.",
                     quote=True,
                 )
                 LOGGER.error(ef)
@@ -185,7 +185,7 @@ async def get_private_note(c: Alita, m: Message, help_option: str):
                 caption=teks,
             )
     LOGGER.info(
-        f"{m.from_user.id} fetched privatenote {note_hash} (type - {getnotes}) in {m.chat.id}",
+        f"{m.from_user.id}, {m.chat.id} içinde {note_hash} (tür - {getnotes}) özel notunu getirdi",
     )
     return
 
@@ -196,12 +196,12 @@ async def get_private_rules(_, m: Message, help_option: str):
     chat_title = Chats.get_chat_info(chat_id)["chat_name"]
     if not rules:
         await m.reply_text(
-            "The Admins of that group have not setup any rules, that dosen't mean you break the decorum of the chat!",
+            "Bu grubun Adminleri herhangi bir kural belirlemedi, bu sohbetin adabını bozduğunuz anlamına gelmez.!",
             quote=True,
         )
         return ""
     await m.reply_text(
-        f"""The rules for <b>{escape(chat_title)} are</b>:\n
+        f"""<b>{escape(chat_title)} için kurallar are</b>:\n"""
 {rules}
 """,
         quote=True,
@@ -211,7 +211,7 @@ async def get_private_rules(_, m: Message, help_option: str):
 
 
 async def get_help_msg(m: Message or CallbackQuery, help_option: str):
-    """Helper function for getting help_msg and it's keyboard."""
+    """help_msg ve klavyesini almak için yardımcı fonksiyon."""
     help_msg = None
     help_kb = None
     help_cmd_keys = sorted(
@@ -237,7 +237,7 @@ async def get_help_msg(m: Message or CallbackQuery, help_option: str):
             + tlang(m, help_option_value)
         )
         LOGGER.info(
-            f"{m.from_user.id} fetched help for {help_option} in {m.chat.id}",
+            f"{m.from_user.id}, {m.chat.id}'de {help_option} için yardım aldı",
         )
     else:
         help_msg = tlang(m, "general.commands_available")
