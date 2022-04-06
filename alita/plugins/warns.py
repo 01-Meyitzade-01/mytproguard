@@ -43,7 +43,7 @@ async def warn(c: Alita, m: Message):
         reason = None
 
     if not len(m.command) > 1 and not m.reply_to_message:
-        await m.reply_text("I can't warn nothing! Tell me user whom I should warn")
+        await m.reply_text("Hiçbir şey uyaramam! Bana kimi uyarmam gerektiğini söyle")
         return
 
     user_id, user_first_name, _ = await extract_user(c, m)
@@ -55,7 +55,7 @@ async def warn(c: Alita, m: Message):
     if user_id in SUPPORT_STAFF:
         await m.reply_text(tlang(m, "admin.support_cannot_restrict"))
         LOGGER.info(
-            f"{m.from_user.id} trying to warn {user_id} (SUPPORT_STAFF) in {m.chat.id}",
+            f"{m.from_user.id}, {m.chat.id} içinde {user_id} (SUPPORT_STAFF) uyarmaya çalışıyor",
         )
         return
 
@@ -65,7 +65,7 @@ async def warn(c: Alita, m: Message):
         admins_group = {i[0] for i in (await admin_cache_reload(m, "warn_user"))}
 
     if user_id in admins_group:
-        await m.reply_text("This user is admin in this chat, I can't warn them!")
+        await m.reply_text("Bu kullanıcı bu sohbette admin, onları uyaramam!")
         return
 
     warn_db = Warns(m.chat.id)
@@ -89,7 +89,7 @@ async def warn(c: Alita, m: Message):
                 f"\n<b>Reason for last warn</b>:\n{reason}"
                 if reason
                 else "\n"
-                f"{(await mention_html(user_first_name, user_id))} has been <b>{action}!</b>"
+                f"{(await mention_html(user_first_name, user_id))} <b>{action} oldu!</b>"
             ),
             reply_to_message_id=r_id,
         )
@@ -98,12 +98,12 @@ async def warn(c: Alita, m: Message):
     rules = Rules(m.chat.id).get_rules()
     if rules:
         kb = InlineKeyboardButton(
-            "Rules 📋",
+            "Kurallar 📋",
             url=f"https://t.me/{Config.BOT_USERNAME}?start=rules_{m.chat.id}",
         )
     else:
         kb = InlineKeyboardButton(
-            "Kick ⚠️",
+            "Tekme ⚠️",
             callback_data=f"warn.kick.{user_id}",
         )
 
@@ -115,15 +115,15 @@ async def warn(c: Alita, m: Message):
             await m.reply_text("Reply to a message to delete it and ban the user!")
             await m.stop_propagation()
         await m.reply_to_message.delete()
-    txt = f"{(await mention_html(user_first_name, user_id))} has {num}/{warn_settings['warn_limit']} warnings!"
-    txt += f"\n<b>Reason for last warn</b>:\n{reason}" if reason else ""
+    txt = f"{(await mention_html(user_first_name, user_id))} {num}/{warn_settings['warn_limit']} uyarı içeriyor!"
+    txt += f"\n<b>Son uyarının nedeni</b>:\n{reason}" eğer başka bir nedense bildir""
     await m.reply_text(
         txt,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "Remove Warn ❌",
+                        "Uyarıyı Kaldır ❌",
                         callback_data=f"warn.remove.{user_id}",
                     ),
                 ]
@@ -139,21 +139,21 @@ async def warn(c: Alita, m: Message):
 async def reset_warn(c: Alita, m: Message):
 
     if not len(m.command) > 1 and not m.reply_to_message:
-        await m.reply_text("I can't warn nothing! Tell me user whom I should warn")
+        await m.reply_text("Hiçbir şey uyaramam! Bana kimi uyarmam gerektiğini söyle")
         return
 
     user_id, user_first_name, _ = await extract_user(c, m)
 
     if user_id == Config.BOT_ID:
-        await m.reply_text("Huh, why would I warn myself?")
+        await m.reply_text("Hah neden uyarayım ki kendimi?")
         return
 
     if user_id in SUPPORT_STAFF:
         await m.reply_text(
-            "They are support users, cannot be restriced, how am I then supposed to unrestrict them?",
+            "Onlar destek kullanıcıları, kısıtlanamazlar, o zaman onları nasıl kısıtlayacağım??",
         )
         LOGGER.info(
-            f"{m.from_user.id} trying to resetwarn {user_id} (SUPPORT_STAFF) in {m.chat.id}",
+            f"{m.from_user.id}, {m.chat.id} içinde {user_id} (SUPPORT_STAFF) uyarısını sıfırlamaya çalışıyor",
         )
         return
 
@@ -163,13 +163,13 @@ async def reset_warn(c: Alita, m: Message):
         admins_group = {i[0] for i in (await admin_cache_reload(m, "reset_warns"))}
 
     if user_id in admins_group:
-        await m.reply_text("This user is admin in this chat, I can't warn them!")
+        await m.reply_text("Bu kullanıcı bu sohbette admin, onları uyaramam!")
         return
 
     warn_db = Warns(m.chat.id)
     warn_db.reset_warns(user_id)
     await m.reply_text(
-        f"Warnings have been reset for {(await mention_html(user_first_name, user_id))}",
+        f"{(bahse konu_html(user_first_name, user_id) için uyarılar sıfırlandı))}",
     )
     return
 
@@ -180,13 +180,13 @@ async def list_warns(c: Alita, m: Message):
     user_id, user_first_name, _ = await extract_user(c, m)
 
     if user_id == Config.BOT_ID:
-        await m.reply_text("Huh, why would I warn myself?")
+        await m.reply_text("Hah, neden kendimi uyarayım ki?")
         return
 
     if user_id in SUPPORT_STAFF:
-        await m.reply_text("This user has no warns!")
+        await m.reply_text("Bu kullanıcının uyarısı yok!")
         LOGGER.info(
-            f"{m.from_user.id} trying to check warns of {user_id} (SUPPORT_STAFF) in {m.chat.id}",
+            f"{m.from_user.id}, {m.chat.id} içinde {user_id} (SUPPORT_STAFF) uyarısını kontrol etmeye çalışıyor",
         )
         return
 
@@ -197,7 +197,7 @@ async def list_warns(c: Alita, m: Message):
 
     if user_id in admins_group:
         await m.reply_text(
-            "This user is admin in this chat, they don't have any warns!",
+            "Bu kullanıcı bu sohbette admin, herhangi bir uyarısı yok!",
         )
         return
 
@@ -206,10 +206,10 @@ async def list_warns(c: Alita, m: Message):
     warns, num_warns = warn_db.get_warns(user_id)
     warn_settings = warn_settings_db.get_warnings_settings()
     if not warns:
-        await m.reply_text("This user has no warns!")
+        await m.reply_text("Bu kullanıcının uyarısı yok!")
         return
     msg = f"{(await mention_html(user_first_name,user_id))} has <b>{num_warns}/{warn_settings['warn_limit']}</b> warns!\n\n<b>Reasons:</b>\n"
-    msg += "\n".join([("- No reason" if i is None else f" - {i}") for i in warns])
+    msg += "\n".join([("- Sebep yok" if i is başka yok f" - {i}") for i in warns])
     await m.reply_text(msg)
     return
 
@@ -221,20 +221,20 @@ async def remove_warn(c: Alita, m: Message):
 
     if not len(m.command) > 1 and not m.reply_to_message:
         await m.reply_text(
-            "I can't remove warns of nothing! Tell me user whose warn should be removed!",
+            "Hiçbir şeyin uyarısını kaldıramıyorum! Bana uyarısının kaldırılması gereken kullanıcıyı söyle!",
         )
         return
 
     user_id, user_first_name, _ = await extract_user(c, m)
 
     if user_id == Config.BOT_ID:
-        await m.reply_text("Huh, why would I warn myself?")
+        await m.reply_text("Hah neden uyarayım ki kendimi?")
         return
 
     if user_id in SUPPORT_STAFF:
         await m.reply_text("This user has no warns!")
         LOGGER.info(
-            f"{m.from_user.id} trying to remove warns of {user_id} (SUPPORT_STAFF) in {m.chat.id}",
+            f"{m.from_user.id}, {m.chat.id} içindeki {user_id} (SUPPORT_STAFF) uyarılarını kaldırmaya çalışıyor",
         )
         return
 
@@ -245,21 +245,21 @@ async def remove_warn(c: Alita, m: Message):
 
     if user_id in admins_group:
         await m.reply_text(
-            "This user is admin in this chat, they don't have any warns!",
+            "Bu kullanıcı bu sohbette admin, herhangi bir uyarısı yok!",
         )
         return
 
     warn_db = Warns(m.chat.id)
     warns, _ = warn_db.get_warns(user_id)
     if not warns:
-        await m.reply_text("This user has no warnings!")
+        await m.reply_text("Bu kullanıcının uyarısı yok!")
         return
 
     _, num_warns = warn_db.remove_warn(user_id)
     await m.reply_text(
         (
             f"{(await mention_html(user_first_name,user_id))} now has <b>{num_warns}</b> warnings!\n"
-            "Their last warn was removed."
+            "Son uyarıları kaldırıldı."
         ),
     )
     return
@@ -274,7 +274,7 @@ async def remove_last_warn_btn(c: Alita, q: CallbackQuery):
         admins_group = {i[0] for i in (await admin_cache_reload(q, "warn_btn"))}
 
     if q.from_user.id not in admins_group:
-        await q.answer("You are not allowed to use this!", show_alert=True)
+        await q.answer("Bunu kullanmana izin verilmiyor!", show_alert=True)
         return
 
     args = q.data.split(".")
@@ -289,10 +289,10 @@ async def remove_last_warn_btn(c: Alita, q: CallbackQuery):
         _, num_warns = warn_db.remove_warn(user_id)
         await q.message.edit_text(
             (
-                f"Admin {(await mention_html(q.from_user.first_name, q.from_user.id))} "
-                "removed last warn for "
+                f"Yönetici {(bahsetme_html(q.from_user.first_name, q.from_user.id))} "
+                "son uyarı kaldırıldı "
                 f"{(await mention_html(user_first_name, user_id))}\n"
-                f"<b>Current Warnings:</b> {num_warns}"
+                f"<b>Güncel Uyarılar:</b> {num_warns}"
             ),
         )
     if action == "kick":
@@ -302,12 +302,12 @@ async def remove_last_warn_btn(c: Alita, q: CallbackQuery):
                 (
                     f"Admin {(await mention_html(q.from_user.first_name, q.from_user.id))} "
                     "kicked user "
-                    f"{(await mention_html(user_first_name, user_id))} for last warning!"
+                    f"Son uyarı için {(mention_html(user_first_name, user_id))}!"
                 ),
             )
         except RPCError as err:
             await q.message.edit_text(
-                f"🛑 Failed to Kick\n<b>Error:</b>\n</code>{err}</code>",
+                f"🛑 Başaramadı Kick\n<b>Error:</b>\n</code>{err}</code>",
             )
 
     await q.answer()
@@ -320,7 +320,7 @@ async def get_settings(_, m: Message):
     settings = warn_settings_db.get_warnings_settings()
     await m.reply_text(
         (
-            "This group has these following settings:\n"
+            "Bu grup aşağıdaki ayarlara sahiptir:\n"
             f"<b>Warn Limit:</b> <code>{settings['warn_limit']}</code>\n"
             f"<b>Warn Mode:</b> <code>{settings['warn_mode']}</code>"
         ),
@@ -336,8 +336,8 @@ async def warnmode(_, m: Message):
         if wm not in ("kick", "ban", "mute"):
             await m.reply_text(
                 (
-                    "Please choose a valid warn mode!"
-                    "Valid options are: <code>ban</code>,<code>kick</code>,<code>mute</code>"
+                    "Lütfen geçerli bir uyarı modu seçin!"
+                    "Geçerli seçenekler: <code>ban</code>,<code>kick</code>,<code>mute</code>"
                 ),
             )
             return
@@ -345,7 +345,7 @@ async def warnmode(_, m: Message):
         await m.reply_text(f"Warn Mode has been set to: {warnmode_var}")
         return
     warnmode_var = warn_settings_db.get_warnmode()
-    await m.reply_text(f"This chats current Warn Mode is: {warnmode_var}")
+    await m.reply_text(f"Bu sohbetler mevcut Uyarı Modu: {warnmode_var}")
     return
 
 
@@ -358,10 +358,10 @@ async def warnlimit(_, m: Message):
             await m.reply_text("Warn Limit can only be a number!")
             return
         warnlimit_var = warn_settings_db.set_warnlimit(wl)
-        await m.reply_text(f"Warn Limit has been set to: {warnlimit_var}")
+        await m.reply_text(f"Uyarı Sınırı olarak ayarlandı: {warnlimit_var}")
         return
     warnlimit_var = warn_settings_db.get_warnlimit()
-    await m.reply_text(f"This chats current Warn Limit is: {warnlimit_var}")
+    await m.reply_text(f"Bu sohbetler mevcut Uyarı Sınırı: {warnlimit_var}")
     return
 
 
