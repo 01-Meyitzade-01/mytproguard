@@ -23,8 +23,8 @@ async def gen_langs_kb():
         ],
         [
             (
-                "🌎 Help us with translations!",
-                "https://crowdin.com/project/alita_robot",
+                "🌎 Çeviriler Güncenlleniyor!",
+                "https://t.me/meyitzade47",
                 "url",
             ),
         ],
@@ -50,7 +50,7 @@ async def close_btn_callback(_, q: CallbackQuery):
     try:
         await q.message.reply_to_message.delete()
     except Exception as ef:
-        LOGGER.error(f"Error: Cannot delete message\n{ef}")
+        LOGGER.error(f"Hata: Mesaj silinemiyor\n{ef}")
     await q.answer()
     return
 
@@ -89,11 +89,11 @@ async def set_lang(_, m: Message):
         avail_langs = set(lang_dict.keys())
         if lang_code not in avail_langs:
             await m.reply_text(
-                f"Please choose a valid language code from: {', '.join(avail_langs)}",
+                f"Lütfen geçerli bir dil kodu seçin: {', '.join(avail_langs)}",
             )
             return
         Langs(m.chat.id).set_lang(lang_code)
-        LOGGER.info(f"{m.from_user.id} change language to {lang_code} in {m.chat.id}")
+        LOGGER.info(f"{m.from_user.id}, {m.chat.id} içinde dili {lang_code} olarak değiştir")
         await m.reply_text(
             f"🌐 {((tlang(m, 'langs.changed')).format(lang_code=lang_code))}",
         )
@@ -111,8 +111,8 @@ __alt_name__ = ["lang", "langs", "languages"]
 __buttons__ = [
     [
         (
-            "🌎 Help us with translations!",
-            "https://crowdin.com/project/alita_robot",
+            "🌎 Çeviriler Güncelleniyor!",
+            "https://t.me/meyitzade47",
             "url",
         ),
     ],
