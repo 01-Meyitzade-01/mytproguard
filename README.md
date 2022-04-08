@@ -65,7 +65,7 @@ It really motivates me to continue this project further.
 **Note:** By default the bot uses the default heroku-20 stack.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/01-Meyitzade-01/mytproguard)
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/01-Meyitzade-01/mytproguard)
+
 ### Traditional
 
 - Install Python v3.7 or later from [Python's Website](https://python.org)
