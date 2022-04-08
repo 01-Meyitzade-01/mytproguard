@@ -113,4 +113,4 @@ If all works well, bot should send message to the **MESSAGE_DUMP** Group!
 
 ## Powered By
 
-[![༒ ᕼIᖇᗩᔕᗴ丅ᑕᕼᗩ丅 ༒](https://img.shields.io/badge/Divide-Projects-green?style=for-the-badge&logo=appveyor)](https://t.me/HirasetTR)
+[༒ ᕼIᖇᗩᔕᗴ丅ᑕᕼᗩ丅 ༒](https://t.me/HirasetTR)
